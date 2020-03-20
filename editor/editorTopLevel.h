@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           editorTopLevel.h  -  description                              
                              -------------------                                         
@@ -36,8 +37,8 @@ class	QCheckBox;
 class	QPushButton;
 class	QPixmap;
 class	QLabel;
-class	QWidgetStack;
-class	QScrollView;
+class	Q3WidgetStack;
+class	Q3ScrollView;
 class	QVBoxLayout;
 class	QComboBox;
 
@@ -62,7 +63,7 @@ class editorTopLevel : public visualTopLevel
 	
 	friend mainWidget;
 public:
-	editorTopLevel(BoEditorApp *app, const char *name = "boeditor", WFlags f = WDestructiveClose );
+	editorTopLevel(BoEditorApp *app, const char *name = "boeditor", Qt::WindowFlags flags = Qt::WDestructiveClose );
 
 	/*
          * selection handling
@@ -134,9 +135,9 @@ private:
 	 */
 
 	/* state view (for selected items) */
-	QWidgetStack	*stack;
+	Q3WidgetStack	*stack;
 	QLabel		*view_one;
-	QScrollView	*view_many;
+	Q3ScrollView	*view_many;
 	QPixmap		*view_none;
 	QCheckBox	*invertBox;
 

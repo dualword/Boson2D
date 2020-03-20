@@ -1,7 +1,8 @@
-/src/.build/
-/src/dualword-pdb
-/Makefile
-/src/Makefile
+.build
+boson2d
+boeditor
+Makefile
+*.log
 
 #eclipse
 /.cproject

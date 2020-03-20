@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          connectDlg.cpp  -  description                              
                              -------------------                                         
@@ -22,14 +23,14 @@
 #include <netdb.h>	// gethostbyname()
 #include <unistd.h>	// gethostname()
 
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qpixmap.h>
-#include <qtimer.h>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
+#include <QPixmap>
+#include <QTimer>
 
-#include <ksock.h>
-#include <kmessagebox.h>
+//#include <ksock.h>
+//#include <kmessagebox.h>
 
 #include "common/log.h"
 #include "common/boconfig.h"
@@ -74,7 +75,7 @@ connectDlg::connectDlg(BosonApp *p, char *servername , const char *name)
 
 	label = new QLabel("Boson Server :", this);
 	label->setGeometry( 10,200, 140,30 );
-	label->setAlignment(AlignVCenter | AlignRight);
+	label->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
 	e_server = new QLineEdit(this);
 	e_server->setText(servername?servername:host);
 	e_server->setGeometry( 160,200, 220,30 );
@@ -82,7 +83,7 @@ connectDlg::connectDlg(BosonApp *p, char *servername , const char *name)
 
 	label = new QLabel("Connecting Port :", this);
 	label->setGeometry( 10,250, 140,30 );
-	label->setAlignment(AlignVCenter | AlignRight);
+	label->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
 	e_port = new QLineEdit(this);
 	e_port->setText( BOSON_DEFAULT_PORT_CHAR );
 	e_port->setGeometry( 160,250, 60,30 );
@@ -91,7 +92,7 @@ connectDlg::connectDlg(BosonApp *p, char *servername , const char *name)
 	/* beautification */
 	label = new QLabel(this);
 	label->move( (390-352)/2, 10);		// biglogo is 352x160
-	label->setAutoResize(true);
+	//label->setAutoResize(true);
 	label->setPixmap ( *dataPath + "pics/biglogo.bmp"); 
 	//label->setPixmap( QPixmap( *dataPath + "pics/biglogo.bmp" ));
 	boAssert(!label->pixmap()->isNull());
@@ -110,7 +111,7 @@ void connectDlg::tryServer(void)
 	sock = socket(PF_INET, SOCK_STREAM, 0);
 	if ( sock<0 ) {
 		logf(LOG_FATAL, "tryServer : unable to create socket.");
-  		KMessageBox::error(this, "Unable to create a socket", "connection error");
+  		//KMessageBox::error(this, "Unable to create a socket", "connection error");
 		return;
 	}
 	
@@ -118,7 +119,7 @@ void connectDlg::tryServer(void)
 	hostinfo = gethostbyname( e_server->text() );
 	if ( !hostinfo ) {
 		logf(LOG_FATAL,"tryServer : unknown host %s.", (const char*)e_server->text());
-  		KMessageBox::error(this, "Can't find the boson server on the net", "Unknown host");
+  		//KMessageBox::error(this, "Can't find the boson server on the net", "Unknown host");
 		return;
 	}
 
@@ -126,7 +127,7 @@ void connectDlg::tryServer(void)
 
 	if ( ! (port>1000) ) {
 		logf(LOG_FATAL,"tryServer : unexpeted port %s.", (const char*) e_port->text());
-  		KMessageBox::error(this, "The port must be an integer bigger than 1000", "unexpected port");
+  		//KMessageBox::error(this, "The port must be an integer bigger than 1000", "unexpected port");
 		return;
 	}
 	sin.sin_addr = *(struct in_addr*) hostinfo->h_addr;
@@ -135,37 +136,37 @@ void connectDlg::tryServer(void)
 	
 	if ( ::connect(sock, (struct sockaddr *)&sin, sizeof(sin))<0 ) {
 		logf(LOG_FATAL, "tryServer : unable to connect socket to \"%s\" server", (const char*) e_server->text() );
-  		KMessageBox::error(this, "Unable to connect to the server", "Unreachable server");
+  		//KMessageBox::error(this, "Unable to connect to the server", "Unreachable server");
 		return ;
 	}
 	
-	/* create the KSocket */
-	/* we don't use KSocket() because of a bug in KDE 1.1.2 that prevent us to know if the connection has failed */
-	Socket = new KSocket(sock);
-
-	if ( Socket->socket() <= 0 )  {
-		logf(LOG_FATAL, "tryServer : unable to create KSocket()");
-		socketState = PSS_CONNECT_DOWN;
-		delete Socket;
-  		KMessageBox::error(this, "Internal error : KSocket() creation error", "Internal error");
-		return;
-	}
-
-	logf(LOG_COMM, "KSocket connect ok");
-	logf(LOG_COMM, "\tsocket = %d, addr = %lu",
-			Socket->socket(), Socket->ipv4_addr());
-
-
-	/* buffer creation */
-	buffer = new boBuffer(Socket->socket() );
-	socketState = PSS_INIT;
-	
-	/* KSocket configuration */
-	connect ( Socket, SIGNAL(closeEvent(KSocket *)), 
-		_parent, SLOT(connectionLost(KSocket*) ) );
-	connect ( Socket, SIGNAL(readEvent(KSocket *)), 
-		_parent, SLOT(handleSocketMessage(KSocket*) ) );
-	Socket->enableRead(TRUE);
+//	/* create the KSocket */
+//	/* we don't use KSocket() because of a bug in KDE 1.1.2 that prevent us to know if the connection has failed */
+//	Socket = new KSocket(sock);
+//
+//	if ( Socket->socket() <= 0 )  {
+//		logf(LOG_FATAL, "tryServer : unable to create KSocket()");
+//		socketState = PSS_CONNECT_DOWN;
+//		delete Socket;
+//  		KMessageBox::error(this, "Internal error : KSocket() creation error", "Internal error");
+//		return;
+//	}
+//
+//	logf(LOG_COMM, "KSocket connect ok");
+//	logf(LOG_COMM, "\tsocket = %d, addr = %lu",
+//			Socket->socket(), Socket->ipv4_addr());
+//
+//
+//	/* buffer creation */
+//	buffer = new boBuffer(Socket->socket() );
+//	socketState = PSS_INIT;
+//
+//	/* KSocket configuration */
+//	connect ( Socket, SIGNAL(closeEvent(KSocket *)),
+//		_parent, SLOT(connectionLost(KSocket*) ) );
+//	connect ( Socket, SIGNAL(readEvent(KSocket *)),
+//		_parent, SLOT(handleSocketMessage(KSocket*) ) );
+//	Socket->enableRead(TRUE);
 	
 	/* beginning of the connection protocol */
 	logf(LOG_LAYER1, "Sending MSG_HS_INIT...");

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          connectDlg.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef CONNECT_DLG_H 
 #define CONNECT_DLG_H 
 
-#include <qdialog.h>
+#include <QDialog>
 
 
 class QLineEdit;

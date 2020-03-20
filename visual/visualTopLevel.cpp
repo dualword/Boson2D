@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualTopLevel.cpp  -  description                              
                              -------------------                                         
@@ -23,8 +24,8 @@
 #include "speciesTheme.h"
 
 
-visualTopLevel::visualTopLevel( const char *name, WFlags f)
-	: KMainWindow(0l, name,f)
+visualTopLevel::visualTopLevel( const char *name, Qt::WindowFlags f)
+	: QMainWindow(0l, name,f)
 	,fixSelected( 0L )
 	,selectionMode(SELECT_NONE)
 {
@@ -118,12 +119,12 @@ void visualTopLevel::mobileDestroyed(int k)
 
 visualMobUnit *visualTopLevel::unSelectMob(long key)
 {
-	visualMobUnit *m = mobSelected[key];
+	visualMobUnit *m = 0; //mobSelected[key];
 	if (!m) {
 		logf(LOG_WARNING, "unSelectMob unknown mobile..");
 		return 0l;
 	}
-	mobSelected.remove(key);
+	//mobSelected.remove(key);
 	m->unSelect();
 
 	if (mobSelected.isEmpty()) {
@@ -136,14 +137,14 @@ visualMobUnit *visualTopLevel::unSelectMob(long key)
 
 void visualTopLevel::unSelectAll(void)
 {
-	QIntDictIterator<visualMobUnit> selIt(mobSelected);
+	Q3DictIterator<visualMobUnit> selIt(mobSelected);
 
 	/* deal with fix */
 	unSelectFix();
 
 	/* deal with mobiles */
 	for (selIt.toFirst(); selIt;) { 		// ++ not needed, selIt should be increased
-		unSelectMob(selIt.currentKey());	// by the .remove() in unselect
+		//unSelectMob(selIt.currentKey());	// by the .remove() in unselect
 	}
 	boAssert(mobSelected.isEmpty());
 	if (!mobSelected.isEmpty()) mobSelected.clear();
@@ -188,7 +189,7 @@ void visualTopLevel::selectMob(long key, visualMobUnit *m)
 			return;
 		}
 
-	mobSelected.insert(key, m); m->select();
+	///mobSelected.insert(key, m); m->select();
 	emit setSelected( species[m->who]->getBigOverview(m));
 	logf(LOG_GAME_LOW, "select mobile");
 }
@@ -197,8 +198,8 @@ void visualTopLevel::selectMob(long key, visualMobUnit *m)
 
 void visualTopLevel::selectArea(int x1, int y1, int x2, int y2)
 {
-	QCanvasItemList list;
-	QCanvasItemList::Iterator it;
+	Q3CanvasItemList list;
+	Q3CanvasItemList::Iterator it;
 	visualMobUnit *u;
  
 	/* ensure that (x1<=x2 && y1<=y2) */
@@ -212,8 +213,8 @@ void visualTopLevel::selectArea(int x1, int y1, int x2, int y2)
 	for( it = list.begin(); it != list.end(); ++it )
 		if ( IS_MOBILE( (*it)->rtti() ) ) {
 			u =  (visualMobUnit *) (*it);
-			if (!mobSelected.find(u->key))		// already selected ?
-				selectMob(u->key, u);
+//			if (!mobSelected.find(u->key))		// already selected ?
+//				selectMob(u->key, u);
 		}
 }
 

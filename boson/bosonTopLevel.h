@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           bosonTopLevel.h  -  description                              
                              -------------------                                         
@@ -37,7 +38,7 @@ class bosonTopLevel : public visualTopLevel
 	Q_OBJECT
 	
 public:
-	bosonTopLevel(BosonApp *parent, const char *name = 0L, WFlags f = WDestructiveClose );
+	bosonTopLevel(BosonApp *parent, const char *name = 0L, Qt::WindowFlags flags = Qt::WDestructiveClose );
 
 	enum orderType_t { OT_NONE =-1 , OT_FACILITY=10, OT_MOBILE=11};
 

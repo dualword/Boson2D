@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           connect.cpp  -  description                              
                              -------------------                                         
@@ -21,8 +22,8 @@
 
 #include <assert.h>
 
-#include <kmessagebox.h>
-#include <ksock.h>
+//#include <kmessagebox.h>
+//#include <ksock.h>
 
 #include "boson.h"
 #include "connect.h"
@@ -36,82 +37,82 @@
 #include "game.h"
 
 
-void BosonApp::connectionLost(KSocket *s)
-{
-	boAssert ( s == Socket);
-	logf(LOG_ERROR, "connectionLost called");
+//void BosonApp::connectionLost(KSocket *s)
+//{
+//	boAssert ( s == Socket);
+//	logf(LOG_ERROR, "connectionLost called");
+//
+//	delete Socket;
+//
+////  	KMessageBox::error(0l,
+////			"Connection with the server has been lost\n"
+////			"Game is over :-(",
+////			"Server Connection Error");
+//
+//	socketState	= PSS_CONNECT_DOWN;
+//	State		= PS_NO_CONNECT;
+//}
 
-	delete Socket;
 
-  	KMessageBox::error(0l,
-			"Connection with the server has been lost\n"
-			"Game is over :-(",
-			"Server Connection Error");
-	
-	socketState	= PSS_CONNECT_DOWN;
-	State		= PS_NO_CONNECT;
-}
-
-
-
-void BosonApp::handleSocketMessage(KSocket *s)
-{
-playerSocketState oldState = socketState;
-bosonMsgTag	tag;
-bosonMsgData	data;
-int		blen;
-
-boAssert ( s == Socket);
-recvMsg (buffer, tag, blen, &data);
-
-if ( tag == MSG_END_SOCKET_LAYER) {
-	logf(LOG_ERROR, "euh.. received MSG_END_SOCKET_LAYR tag, ignoring\n");
-	return;
-	}
-
-if ( tag > MSG_END_SOCKET_LAYER)
-	if (PSS_CONNECT_OK == socketState) {
-		handleDialogMessage(tag,blen, &data);
-		return;
-		}
-	else {
-		logf(LOG_ERROR, "Receiving Server message while not in CONNECT_OK state, ignoring\n");
-		return;
-		}
-
-boAssert(0==blen);
-
-switch(socketState) {
-	default : 
-		TRANSITION(MSG_SYNC_ASK,  PSS_SYNC_OTHER, MSG_SYNC_ACK1);
-
-		// UNKNOWN_TAG;
-
-		logf(LOG_FATAL, "handleSocketMessage:: GRAVE  unknown state, aborting\n");
-		exit(-1);
-		break; /* anyway ? */
-	
-	case PSS_WAIT_CONFIRM_INIT :
-		if (MSG_HS_INIT_OK == tag ) {
-			State = PS_WAIT_ANSWER;
-			sendMsg(buffer, MSG_DLG_ASK, BOSON_NO_DATA);
-			}
-		TRANSITION(MSG_HS_INIT_OK, PSS_CONNECT_OK, BOSON_NO_TAG);
-		UNKNOWN_TAG(socketState);
-
-	case PSS_SYNC_ME :
-		TRANSITION(MSG_SYNC_ACK1, PSS_CONNECT_OK, MSG_SYNC_ACK2);
-		UNKNOWN_TAG(socketState);
-
-	case PSS_SYNC_OTHER :
-		TRANSITION(MSG_SYNC_ACK2, PSS_CONNECT_OK, BOSON_NO_TAG);
-		UNKNOWN_TAG(socketState);
-		
-	}
-
-if (oldState != socketState)
-	logf(LOG_LAYER1, "Player : socketState has changed from %d to %d", oldState, socketState);
-}
+//
+//void BosonApp::handleSocketMessage(KSocket *s)
+//{
+//playerSocketState oldState = socketState;
+//bosonMsgTag	tag;
+//bosonMsgData	data;
+//int		blen;
+//
+//boAssert ( s == Socket);
+//recvMsg (buffer, tag, blen, &data);
+//
+//if ( tag == MSG_END_SOCKET_LAYER) {
+//	logf(LOG_ERROR, "euh.. received MSG_END_SOCKET_LAYR tag, ignoring\n");
+//	return;
+//	}
+//
+//if ( tag > MSG_END_SOCKET_LAYER)
+//	if (PSS_CONNECT_OK == socketState) {
+//		handleDialogMessage(tag,blen, &data);
+//		return;
+//		}
+//	else {
+//		logf(LOG_ERROR, "Receiving Server message while not in CONNECT_OK state, ignoring\n");
+//		return;
+//		}
+//
+//boAssert(0==blen);
+//
+//switch(socketState) {
+//	default :
+//		TRANSITION(MSG_SYNC_ASK,  PSS_SYNC_OTHER, MSG_SYNC_ACK1);
+//
+//		// UNKNOWN_TAG;
+//
+//		logf(LOG_FATAL, "handleSocketMessage:: GRAVE  unknown state, aborting\n");
+//		exit(-1);
+//		break; /* anyway ? */
+//
+//	case PSS_WAIT_CONFIRM_INIT :
+//		if (MSG_HS_INIT_OK == tag ) {
+//			State = PS_WAIT_ANSWER;
+//			sendMsg(buffer, MSG_DLG_ASK, BOSON_NO_DATA);
+//			}
+//		TRANSITION(MSG_HS_INIT_OK, PSS_CONNECT_OK, BOSON_NO_TAG);
+//		UNKNOWN_TAG(socketState);
+//
+//	case PSS_SYNC_ME :
+//		TRANSITION(MSG_SYNC_ACK1, PSS_CONNECT_OK, MSG_SYNC_ACK2);
+//		UNKNOWN_TAG(socketState);
+//
+//	case PSS_SYNC_OTHER :
+//		TRANSITION(MSG_SYNC_ACK2, PSS_CONNECT_OK, BOSON_NO_TAG);
+//		UNKNOWN_TAG(socketState);
+//
+//	}
+//
+//if (oldState != socketState)
+//	logf(LOG_LAYER1, "Player : socketState has changed from %d to %d", oldState, socketState);
+//}
 
 
 
@@ -193,10 +194,10 @@ void BosonApp::gameEnd( endMsg_t::endReasonType reason)
 
 	delete Socket;
 
-  	KMessageBox::error(0l,
-			"Connection with one of the other player has been lost\n"
-			"Game is over :-(",
-			"Some other player has quitted");
+//  	KMessageBox::error(0l,
+//			"Connection with one of the other player has been lost\n"
+//			"Game is over :-(",
+//			"Some other player has quitted");
 	
 	socketState	= PSS_CONNECT_DOWN;
 	State		= PS_NO_CONNECT;
@@ -258,8 +259,8 @@ switch(tag) {
 
 		/* center all TopLevels on CMDBUNKER creation */
 		if ( FACILITY_CMDBUNKER == data->facility.type && data->facility.who == who_am_i)
-			for ( bosonTopLevel *btl=topLevels.first(); btl != 0; btl=topLevels.next() )
-				btl->reCenterView(data->facility.x, data->facility.y);
+//			for ( bosonTopLevel *btl=topLevels.first(); btl != 0; btl=topLevels.next() )
+//				btl->reCenterView(data->facility.x, data->facility.y);
 
 		break;
 
@@ -284,11 +285,11 @@ switch(tag) {
 			data->fixChanged.key,
 			data->fixChanged.state
 			);
-		f = getFacility(data->fixChanged.key);
-		if (f) {
-			f->s_setState(data->fixChanged.state);
-			}
-		else logf(LOG_ERROR, "MSG_FACILITY_CHANGED : unexpected key:%d",data->fixChanged.key);
+//		f = getFacility(data->fixChanged.key);
+//		if (f) {
+//			f->s_setState(data->fixChanged.state);
+//			}
+//		else logf(LOG_ERROR, "MSG_FACILITY_CHANGED : unexpected key:%d",data->fixChanged.key);
 		break;
 
 

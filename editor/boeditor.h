@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           boeditor.h  -  description                              
                              -------------------                                         
@@ -22,12 +23,13 @@
 #define BOEDITOR_H 
  
 // include files for Qt
-#include <qlist.h>
+#include <QApplication>
+#include <QList>
 // include files for KDE 
-#include <kapp.h> 
-#include <kaction.h>
+//#include <kapp.h>
+//#include <kaction.h>
 
-class KActionCollection;
+//class KActionCollection;
 class editorTopLevel;
 
 
@@ -35,17 +37,17 @@ class editorTopLevel;
  * The boson Application : handle the different communication layers
  *
  */
-class BoEditorApp : public KApplication
+class BoEditorApp : public QApplication
 {
 	Q_OBJECT
 
 public:
 	/** construtor */
-	BoEditorApp(void); 
+	BoEditorApp(int &argc, char **argv);
 	/** destructor */
 	~BoEditorApp();
 
-	KActionCollection &actions(void) { return m_actions; }
+	//KActionCollection &actions(void) { return m_actions; }
 
 	// should be private, but needed in main.cpp
 	/** actually open the file / set filename */
@@ -83,7 +85,7 @@ public slots:
 private:
 	void init(void); // internal
 
-	KActionCollection m_actions;
+	//KActionCollection m_actions;
 	QString		filename;
 
 	QList<editorTopLevel>	topLevels;

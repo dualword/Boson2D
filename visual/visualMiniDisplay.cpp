@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualMiniDisplay.cpp  -  description                              
                              -------------------                                         
@@ -18,7 +19,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qpixmap.h>
+#include <QPixmap>
+#include <QPainter>
+#include <QMouseEvent>
 
 #include "common/log.h"
 
@@ -50,7 +53,7 @@ void visualMiniDisplay::createData(void)
 	/* create the (back)ground pixmap */
 	if (_ground) delete _ground;
 	_ground = new QPixmap(_w,_h);
-	_ground->fill(black);
+	//_ground->fill(black);
 
 }
 
@@ -82,19 +85,19 @@ void visualMiniDisplay::sync(void)
 			switch(g) {
 				default:
 //					logf(LOG_ERROR, "visualMiniDisplay::sync : unexpected groundType : %d", g);
-					setPoint( i, j, black, &p);
+					//setPoint( i, j, black, &p);
 					break;
 				case GROUND_WATER :
 //				case GROUND_WATER_OIL:
-					setPoint( i, j, blue, &p);
+					//setPoint( i, j, blue, &p);
 					break;
 				case GROUND_GRASS :
 				case GROUND_GRASS_OIL :
 				case GROUND_GRASS_MINERAL :
-					setPoint( i, j, green, &p);
+					//setPoint( i, j, green, &p);
 					break;
 				case GROUND_DESERT :
-					setPoint( i, j, darkYellow, &p);
+					//setPoint( i, j, darkYellow, &p);
 					break;
 			}
 		}
@@ -116,8 +119,8 @@ void visualMiniDisplay::paintEvent(QPaintEvent *)
 	p.drawPixmap(0,0,*_ground);
 
 	/* the little rectangle */
-	p.setPen(white);
-	p.setRasterOp(XorROP);
+//	p.setPen(white);
+//	p.setRasterOp(XorROP);
 	p.drawRect(vtl->X(), vtl->Y(), vtl->L()-1, vtl->H()-1);
 
 	p.end();
@@ -140,19 +143,19 @@ void visualMiniDisplay::newCell(int i, int j, groundType g) //, QPainter *p)
 	switch(g) {
 		default:
 //			logf(LOG_ERROR, "visualMiniDisplay::newCell : unexpected groundType : %d", g);
-			setPoint( i, j, black, &p);
+			//setPoint( i, j, black, &p);
 			break;
 		case GROUND_WATER :
 //		case GROUND_WATER_OIL:
-			setPoint( i, j, blue, &p);
+			//setPoint( i, j, blue, &p);
 			break;
 		case GROUND_GRASS :
 		case GROUND_GRASS_OIL :
 		case GROUND_GRASS_MINERAL :
-			setPoint( i, j, green, &p);
+			//setPoint( i, j, green, &p);
 			break;
 		case GROUND_DESERT :
-			setPoint( i, j, darkYellow, &p);
+			//setPoint( i, j, darkYellow, &p);
 			break;
 		}
 	p.end();
@@ -178,7 +181,7 @@ void visualMiniDisplay::mousePressEvent(QMouseEvent *e)
 	x = e->x();
 	y = e->y();
 
-	if (e->button() & LeftButton) {
+	if (e->button() & Qt::LeftButton) {
 		emit reCenterView(x,y);
 		return;
 		}

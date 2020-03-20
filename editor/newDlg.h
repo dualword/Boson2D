@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          newDlg.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef NEW_DLG_H 
 #define NEW_DLG_H 
 
-#include <qdialog.h>
+#include <QDialog>
 
 class QPushButton;
 class QLabel;

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                        mainWidget.h -  description 
                              -------------------                                         
@@ -21,21 +22,21 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include <qhbox.h>
+#include <Q3HBox>
 
 #include "common/msgData.h"
 
 class	bosonTopLevel;
 class	visualMiniDisplay;
 class	bosonBigDisplay;
-class	QWidgetStack;
+class	Q3WidgetStack;
 class	QLabel;
-class	QScrollView;
+class	Q3ScrollView;
 class	QPixmap;
 class	QPushButton;
 class	QFrame;
 
-class mainWidget : public QHBox 
+class mainWidget : public Q3HBox
 {
 	Q_OBJECT
 
@@ -60,9 +61,9 @@ private:
 	bosonBigDisplay		*big;
 
 	/* state view (for selected items) */
-	QWidgetStack	*stack;
+	Q3WidgetStack	*stack;
 	QLabel		*view_one;
-	QScrollView	*view_many;
+	Q3ScrollView	*view_many;
 	QPixmap		*view_none;
 };
 

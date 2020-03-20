@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                        mainWidget.cpp -  description 
                              -------------------                                         
@@ -18,13 +19,14 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qkeycode.h>
-#include <qwidgetstack.h>
-#include <qframe.h>
-#include <qscrollview.h>
-#include <qpixmap.h>
-#include <qlabel.h>
-#include <qvbox.h>
+//#include <qkeycode.h>
+#include <Q3WidgetStack>
+#include <QFrame>
+#include <Q3ScrollView>
+#include <QPixmap>
+#include <QLabel>
+#include <Q3VBox>
+#include <QKeyEvent>
 
 #include "common/log.h"
 
@@ -41,11 +43,11 @@
 
 
 mainWidget::mainWidget( bosonTopLevel *parent, const char *name)
-	:QHBox(parent, name)
+	:Q3HBox(parent, name)
 { 
 	btl = parent;
 
-	QVBox *vb = new QVBox(this);
+	Q3VBox *vb = new Q3VBox(this);
 	big = new bosonBigDisplay( parent, this);
 	mini = new visualMiniDisplay( parent, vb);
 	mainFrame = new QFrame(vb);
@@ -54,7 +56,7 @@ mainWidget::mainWidget( bosonTopLevel *parent, const char *name)
 	makeCommandGui();
 
 	/* focus handling */
-	setFocusPolicy (StrongFocus);		// accept key event
+	//setFocusPolicy (StrongFocus);		// accept key event
 	setFocus();
 
 }
@@ -64,16 +66,16 @@ mainWidget::mainWidget( bosonTopLevel *parent, const char *name)
 void mainWidget::keyReleaseEvent ( QKeyEvent * e )
 {
 	switch (e->key()) {
-		case Key_Left:
+		case Qt::Key_Left:
 			btl->relativeMoveView(-ARROW_KEY_STEP,0);
 			break;
-		case Key_Right:
+		case Qt::Key_Right:
 			btl->relativeMoveView(ARROW_KEY_STEP,0);
 			break;
-		case Key_Up:
+		case Qt::Key_Up:
 			btl->relativeMoveView(0, -ARROW_KEY_STEP);
 			break;
-		case Key_Down:
+		case Qt::Key_Down:
 			btl->relativeMoveView(0, ARROW_KEY_STEP);
 			break;
 	}
@@ -90,7 +92,7 @@ void mainWidget::makeCommandGui(void)
 	mainFrame->setLineWidth(5);
 	
 	/* stack */
-	stack = new QWidgetStack(mainFrame, "qwidgetstack");
+	stack = new Q3WidgetStack(mainFrame, "qwidgetstack");
 	stack->setFrameStyle(QFrame::Raised | QFrame::Panel);
 	stack->setLineWidth(5);
 	stack->setGeometry(10,23,180,110);
@@ -103,7 +105,7 @@ void mainWidget::makeCommandGui(void)
 	stack->addWidget(view_one, VIEW_ONE);
 
 	/* stack/many */
-	view_many = new QScrollView(stack,"scrollview");
+	view_many = new Q3ScrollView(stack,"scrollview");
 	stack->addWidget(view_many, VIEW_MANY);
 
 	stack->raiseWidget(VIEW_ONE);

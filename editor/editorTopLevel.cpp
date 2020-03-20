@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           editorTopLevel.cpp  -  description                              
                              -------------------                                         
@@ -19,18 +20,18 @@
  ***************************************************************************/
 
 
-#include <qlayout.h>
-#include <qwidgetstack.h>
-#include <qframe.h>
-#include <qscrollview.h>
-#include <qpixmap.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
-#include <qcheckbox.h>
+#include <QLayout>
+#include <Q3WidgetStack>
+#include <QFrame>
+#include <Q3ScrollView>
+#include <QPixmap>
+#include <QLabel>
+#include <QPushButton>
+#include <QComboBox>
+#include <QCheckBox>
 
-#include <klocale.h>
-#include <kstdaction.h>
+//#include <klocale.h>
+//#include <kstdaction.h>
 
 #include "common/log.h"
 #include "common/bomap.h"
@@ -71,28 +72,28 @@ static void fillGroundPixmap( QPixmap *p, int g)
 
 
 #define ADD_ACTION(name) KStdAction::##name(this, SLOT(slot_##name()), actionCollection() );
-editorTopLevel::editorTopLevel( BoEditorApp *app,  const char *name, WFlags f)
+editorTopLevel::editorTopLevel( BoEditorApp *app,  const char *name, Qt::WindowFlags f)
 	: visualTopLevel(name,f)
 	, mw(this)
 {
 
 	/* toplevelwindow-specific actions */
-	(void) new KAction(
-		i18n("&Destroy objects"), Qt::CTRL + Qt::Key_E,
-		this, SLOT(slot_editDestroy()),
-		actionCollection(), "edit_destroy");
-	ADD_ACTION(close);
+//	(void) new KAction(
+//		i18n("&Destroy objects"), Qt::CTRL + Qt::Key_E,
+//		this, SLOT(slot_editDestroy()),
+//		actionCollection(), "edit_destroy");
+	//ADD_ACTION(close);
 //	ADD_ACTION(showToolbar);
 
 	/* application wide actions */
-	*actionCollection() +=  app->actions();
+	//*actionCollection() +=  app->actions();
 
 	/* widgets */
 	makeCommandGui();
 	setCentralWidget(&mw);
 
 	/* actual building */
-	createGUI("boeditorui.rc");
+	//createGUI("boeditorui.rc");
 
 	resize (790, 590);
 
@@ -309,7 +310,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<4);
 			g = GET_BIG_TRANS_NUMBER (trans,  (inverted?4:0) + but );
 			otype = OT_GROUND;
-			setSelected ( & QPixmap( * bigTiles[but]->pixmap()) );
+			//setSelected ( & QPixmap( * bigTiles[but]->pixmap()) );
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -317,7 +318,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<4);
 			g = GET_BIG_TRANS_NUMBER (trans,  (inverted?12:8) + but );
 			otype = OT_GROUND;
-			setSelected ( & QPixmap( * bigTiles[but]->pixmap()) );
+			///setSelected ( & QPixmap( * bigTiles[but]->pixmap()) );
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -328,7 +329,7 @@ void editorTopLevel::handleButton(int but)
 				g = inverted?groundTransProp[trans].to:groundTransProp[trans].from;
 			else	g = GET_TRANS_NUMBER(trans, m_map[ (inverted?9:0) + but ]);
 			otype = OT_GROUND;
-			setSelected( & QPixmap ( * tiles[but]->pixmap()) );
+			//setSelected( & QPixmap ( * tiles[but]->pixmap()) );
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -336,7 +337,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<GROUND_LAST-1);
 			g = (groundType) (but+1); // +1 cause GROUND_UNKNOWN
 			otype = OT_GROUND;
-			setSelected( & QPixmap ( * tiles[but]->pixmap()) );
+			//setSelected( & QPixmap ( * tiles[but]->pixmap()) );
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -357,7 +358,7 @@ void editorTopLevel::makeCommandGui(void)
 	mainFrame->setLineWidth(5);
 
 	/* stack */
-	stack = new QWidgetStack(mainFrame, "qwidgetstack");
+	stack = new Q3WidgetStack(mainFrame, "Q3WidgetStack");
 	stack->setFrameStyle(QFrame::Raised | QFrame::Panel);
 	stack->setLineWidth(5);
 	stack->setGeometry(10,10,110,110);
@@ -370,7 +371,7 @@ void editorTopLevel::makeCommandGui(void)
 	stack->addWidget(view_one, VIEW_ONE);
 
 	/* stack/many */
-	view_many = new QScrollView(stack,"scrollview");
+	view_many = new Q3ScrollView(stack,"scrollview");
 	stack->addWidget(view_many, VIEW_MANY);
 
 	stack->raiseWidget(VIEW_ONE);
@@ -459,20 +460,20 @@ void editorTopLevel::slot_editDestroy(void)
 	int mkey;
 	editorCanvas  *_canvas = (editorCanvas*)vcanvas;
 
-	if (fixSelected) {
-		/* destroy fix */
-		mkey = fixSelected->key;
-		unSelectFix();
-		_canvas->facilities.remove(mkey);
-	} else {
-		/* destroy mobiles */
-		QIntDictIterator<visualMobUnit> selIt(mobSelected);
-		for (selIt.toFirst(); selIt;) {			// ++ not needed, selIt should be increased
-			mkey = selIt.currentKey(); 		// by the .remove() in unselect
-			unSelectMob(mkey);
-			_canvas->mobiles.remove(mkey);
-		}
-	}
+//	if (fixSelected) {
+//		/* destroy fix */
+//		mkey = fixSelected->key;
+//		unSelectFix();
+//		_//canvas->facilities.remove(mkey);
+//	} else {
+//		/* destroy mobiles */
+//		Q3DictIterator<visualMobUnit> selIt(mobSelected);
+//		for (selIt.toFirst(); selIt;) {			// ++ not needed, selIt should be increased
+//			mkey = selIt.currentKey(); 		// by the .remove() in unselect
+//			unSelectMob(mkey);
+//			_//canvas->mobiles.remove(mkey);
+//		}
+//	}
 	_canvas->update();
 }
 
@@ -493,7 +494,7 @@ void editorTopLevel::updateViews(void)
 bool editorTopLevel::queryExit()
 {
 //	logf(LOG_INFO, "queryExit called");
-	BoEditorApp *app = (BoEditorApp *) kapp;
-	return app->slot_close();
+	//BoEditorApp *app = (BoEditorApp *) kapp;
+	return true; //app->slot_close();
 }
 

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          serverDlg.cpp  -  description                              
                              -------------------                                         
@@ -21,15 +22,15 @@
 #include <stdlib.h>	// atoi
 #include <unistd.h>	// gethostname()
 
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qpixmap.h>
-#include <qtimer.h>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
+#include <QPixmap>
+#include <QTimer>
 
-#include <ksock.h>
-#include <kprocess.h>
-#include <kmessagebox.h>
+//#include <ksock.h>
+//#include <kprocess.h>
+//#include <kmessagebox.h>
 
 #include "common/log.h"
 #include "common/boconfig.h"
@@ -62,7 +63,7 @@ serverDlg::serverDlg(const char *name)
 	/* params */
 	label = new QLabel("Boson Server :", this);
 	label->setGeometry( 10,200, 140,30 );
-	label->setAlignment(AlignVCenter | AlignRight);
+	label->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
 	
 	if (gethostname(host, 1999)) {
 		logf(LOG_ERROR, "can't get hostname, aborting");
@@ -73,7 +74,7 @@ serverDlg::serverDlg(const char *name)
 
 	label = new QLabel("Connecting Port :", this);
 	label->setGeometry( 10,250, 140,30 );
-	label->setAlignment(AlignVCenter | AlignRight);
+	label->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
 	e_port = new QLineEdit(this);
 	e_port->setText( BOSON_DEFAULT_PORT_CHAR );
 	e_port->setGeometry( 160,250, 60,30 );
@@ -82,7 +83,7 @@ serverDlg::serverDlg(const char *name)
 	/* beautification */
 	label = new QLabel(this);
 	label->move( (390-352)/2, 10);		// biglogo is 352x160
-	label->setAutoResize(true);
+	//label->setAutoResize(true);
 	label->setPixmap ( *dataPath + "pics/biglogo.bmp"); 
 	//label->setPixmap( QPixmap( *dataPath + "pics/biglogo.bmp" ));
 	boAssert(!label->pixmap()->isNull());
@@ -95,19 +96,19 @@ void serverDlg::doIt(void)
 
 	if ( ! (port>1000) ) {
 		logf(LOG_FATAL,"launchServer : unexpected port %s.", (const char *)e_port->text());
-  		KMessageBox::error(this, "The port must be an integer bigger than 1000", "unexpected port");
+  		//KMessageBox::error(this, "The port must be an integer bigger than 1000", "unexpected port");
 		return;
 	}
 
 	emit configure(l_host->text(), (const char *)e_port->text()); // so that connectDlg knows where to connect
 
-	proc = new KProcess();
-	*proc << "boserver";
-	*proc << e_port->text();
+//	proc = new KProcess();
+//	*proc << "boserver";
+//	*proc << e_port->text();
 	
-	connect( proc, SIGNAL(processExited(KProcess *)),		SLOT(serverDied(KProcess *)) );
-	connect( proc, SIGNAL(receivedStdout(KProcess *, char *, int)), SLOT(receivedStdout(KProcess *, char *, int)) );
-	proc->start(KProcess::NotifyOnExit, KProcess::Stdout);
+//	connect( proc, SIGNAL(processExited(KProcess *)),		SLOT(serverDied(KProcess *)) );
+//	connect( proc, SIGNAL(receivedStdout(KProcess *, char *, int)), SLOT(receivedStdout(KProcess *, char *, int)) );
+//	proc->start(KProcess::NotifyOnExit, KProcess::Stdout);
 
 	b_ok->setEnabled(false);
 	
@@ -121,40 +122,40 @@ void serverDlg::doIt(void)
 
 void serverDlg::receivedStdout(KProcess *p, char *buffer, int buflen)
 {
-	boAssert(proc==p);
-	
-	if (buflen != (int)strlen(BOSON_SERVER_LAUNCHED) || !strcmp(BOSON_SERVER_LAUNCHED "\n", buffer)) {
-		buffer[buflen]='\0';
-		logf(LOG_ERROR, "received \"%s\", waiting for \"%s\"", buffer, BOSON_SERVER_LAUNCHED);
-		return;
-	}
-
-//	connect( proc, SIGNAL(processExited(KProcess *)), parent(), SLOT(serverDied(KProcess *)) );
-	logf(LOG_INFO, BOSON_SERVER_LAUNCHED);
-	accept();	
+//	boAssert(proc==p);
+//
+//	if (buflen != (int)strlen(BOSON_SERVER_LAUNCHED) || !strcmp(BOSON_SERVER_LAUNCHED "\n", buffer)) {
+//		buffer[buflen]='\0';
+//		logf(LOG_ERROR, "received \"%s\", waiting for \"%s\"", buffer, BOSON_SERVER_LAUNCHED);
+//		return;
+//	}
+//
+////	connect( proc, SIGNAL(processExited(KProcess *)), parent(), SLOT(serverDied(KProcess *)) );
+//	logf(LOG_INFO, BOSON_SERVER_LAUNCHED);
+//	accept();
 }
 
 void serverDlg::timeOut(void)
 {
 	delete proc;
 	b_ok->setEnabled(true);
-  	KMessageBox::error(this,
-			"The server hasn't been quick enough to connect",
-			"server timed out");
+//  	KMessageBox::error(this,
+//			"The server hasn't been quick enough to connect",
+//			"server timed out");
 	return;
 }
 
 
 void serverDlg::serverDied(KProcess *p)
 {
-	boAssert(proc==p);
-
-	delete proc;
-	b_ok->setEnabled(true);
-  	KMessageBox::error(this,
-			"The server died for an unknown reason, please report\n"
-			"a bug to the author <orzel@yalbi.com>...",
-			"server died");
+//	boAssert(proc==p);
+//
+//	delete proc;
+//	b_ok->setEnabled(true);
+//  	KMessageBox::error(this,
+//			"The server died for an unknown reason, please report\n"
+//			"a bug to the author <orzel@yalbi.com>...",
+//			"server died");
 	return;
 }
 

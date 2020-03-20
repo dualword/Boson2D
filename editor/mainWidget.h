@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                        mainWidget.h -  description 
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include <qhbox.h>
+#include <Q3HBox>
 
 #include "common/msgData.h"
 
@@ -32,7 +33,7 @@ class editorBigDisplay;
 class QFrame;
 
 
-class mainWidget : public QHBox
+class mainWidget : public  Q3HBox
 {
 	Q_OBJECT
 

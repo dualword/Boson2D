@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          boFile.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef BOFILE_H 
 #define BOFILE_H 
 
-#include <qstring.h>
+#include <QString>
 
 #include "common/unitType.h"
 #include "common/groundType.h"

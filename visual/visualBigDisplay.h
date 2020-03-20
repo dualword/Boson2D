@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualBigDisplay.h  -  description                              
                              -------------------                                         
@@ -21,9 +22,9 @@
 #ifndef VISUALBIGDISPLAY_H 
 #define VISUALBIGDISPLAY_H 
 
-#include <qintdict.h>
-#include <qpainter.h>
-#include <qcanvas.h>
+#include <Q3Dict>
+#include <QPainter>
+#include <Q3CanvasView>
 
 #include "common/groundType.h"
 #include "common/unitType.h"
@@ -41,12 +42,12 @@ class orderWin;
 /** 
   * This class handles all operations concerning the game Board/Map
   */
-class visualBigDisplay : public QCanvasView
+class visualBigDisplay : public Q3CanvasView
 {
   Q_OBJECT
 
 public:
-  visualBigDisplay(/*orderWin *,*/ visualTopLevel *, QWidget *parent=0, const char *name=0L, WFlags f=0);
+  visualBigDisplay(/*orderWin *,*/ visualTopLevel *, QWidget *parent=0, const char *name=0L, Qt::WindowFlags f=0);
   ~visualBigDisplay();
 
 

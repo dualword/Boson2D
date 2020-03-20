@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           main.cpp  -  description                              
                              -------------------                                         
@@ -22,33 +23,33 @@
 #include <config.h>
 #endif
 
-#include <klocale.h>
-#include <kcmdlineargs.h>
-#include <kaboutdata.h>
+//#include <klocale.h>
+//#include <kcmdlineargs.h>
+//#include <kaboutdata.h>
 
 #include "boson.h" 
  
 int main(int argc, char* argv[])
 { 
 
-	/* about data */
-	KAboutData aboutData(
-		"boson"
-		, I18N_NOOP("Boson game")
-		, VERSION
-		, I18N_NOOP("A realtime strategy game for KDE")
-		, KAboutData::License_GPL
-		, "(c) 1999-2000, The boson team"
-		, 0l
-		, "http://boson.eu.org"
-		, "boson-fb@yalbi.com" );
-	   
-	aboutData.addAuthor("Thomas Capricelli", I18N_NOOP("Game Design & Coding"), "orzel@yalbi.com", "http://aquila.rezel.enst.fr/thomas/");
-	aboutData.addAuthor("Benjamin Adler", I18N_NOOP("Graphics & Homepage Design"), "benadler@bigfoot.de");
-		                                                              
+//	/* about data */
+//	KAboutData aboutData(
+//		"boson"
+//		, I18N_NOOP("Boson game")
+//		, VERSION
+//		, I18N_NOOP("A realtime strategy game for KDE")
+//		, KAboutData::License_GPL
+//		, "(c) 1999-2000, The boson team"
+//		, 0l
+//		, "http://boson.eu.org"
+//		, "boson-fb@yalbi.com" );
+//
+//	aboutData.addAuthor("Thomas Capricelli", I18N_NOOP("Game Design & Coding"), "orzel@yalbi.com", "http://aquila.rezel.enst.fr/thomas/");
+//	aboutData.addAuthor("Benjamin Adler", I18N_NOOP("Graphics & Homepage Design"), "benadler@bigfoot.de");
+//
 	/* application */
-	KCmdLineArgs::init( argc, argv, &aboutData );
-	BosonApp app;  
+	//KCmdLineArgs::init( argc, argv, &aboutData );
+	BosonApp app(argc, argv);
 
 	/* main event loop */
 	return app.exec();

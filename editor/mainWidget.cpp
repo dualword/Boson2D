@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                        mainWidget.cpp -  description 
                              -------------------                                         
@@ -18,13 +19,14 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qkeycode.h>
-#include <qwidgetstack.h>
-#include <qframe.h>
-#include <qscrollview.h>
-#include <qpixmap.h>
-#include <qlabel.h>
-#include <qvbox.h>
+//#include <qkeycode.h>
+#include <Q3WidgetStack>
+#include <QFrame>
+#include <Q3ScrollView>
+#include <QPixmap>
+#include <QLabel>
+#include <Q3VBox>
+#include <QKeyEvent>
 
 #include "common/log.h"
 
@@ -35,11 +37,11 @@
 
 
 mainWidget::mainWidget( editorTopLevel *parent, const char *name)
-	:QHBox(parent, name)
+	:Q3HBox(parent, name)
 { 
 	etl = parent;
 
-	QVBox *vb = new QVBox(this);
+	Q3VBox  *vb = new Q3VBox (this);
 	big = new editorBigDisplay( parent, this);
 	mini = new visualMiniDisplay( parent, vb);
 	mainFrame = new QFrame(vb);
@@ -48,7 +50,7 @@ mainWidget::mainWidget( editorTopLevel *parent, const char *name)
 	connect (etl, SIGNAL(setWho(uint)), big, SLOT(setWho(uint)));
 
 	/* focus handling */
-	setFocusPolicy (StrongFocus);		// accept key event
+	setFocusPolicy (Qt::StrongFocus);		// accept key event
 	setFocus();
 
 
@@ -59,16 +61,16 @@ mainWidget::mainWidget( editorTopLevel *parent, const char *name)
 void mainWidget::keyReleaseEvent ( QKeyEvent * e )
 {
 	switch (e->key()) {
-		case Key_Left:
+		case Qt::Key_Left:
 			etl->relativeMoveView(-ARROW_KEY_STEP,0);
 			break;
-		case Key_Right:
+		case Qt::Key_Right:
 			etl->relativeMoveView(ARROW_KEY_STEP,0);
 			break;
-		case Key_Up:
+		case Qt::Key_Up:
 			etl->relativeMoveView(0, -ARROW_KEY_STEP);
 			break;
-		case Key_Down:
+		case Qt::Key_Down:
 			etl->relativeMoveView(0, ARROW_KEY_STEP);
 			break;
 	}

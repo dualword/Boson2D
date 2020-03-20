@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           bosonCanvas.h  -  description                              
                              -------------------                                         
@@ -23,7 +24,7 @@
 
 #include <time.h>
 
-#include <qintdict.h>
+#include <Q3Dict>
 
 #include "common/msgData.h"
 #include "common/unit.h"	// Facility
@@ -79,12 +80,12 @@ public:
 	void 	unsetCellFlag(QRect r, Cell::cell_flags flag);
 
 	/* concerning contents */
-	playerFacility *getFacility(long key) { return facility.find(key); }
+	//playerFacility *getFacility(long key) { return facility.find(key); }
 	bool		checkMove(QRect r, uint goFlag );
 
 	//private :
-	QIntDict<playerMobUnit>	mobile;
-	QIntDict<playerFacility> facility;
+	 Q3Dict<playerMobUnit>	mobile;
+	 Q3Dict<playerFacility> facility;
 
 signals:
 	void	oilUpdated(int);

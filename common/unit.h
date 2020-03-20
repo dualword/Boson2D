@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           unit.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef UNIT_H 
 #define UNIT_H 
 
-#include <qrect.h>
+#include <QRect>
 
 #include "common/unitType.h"
 #include "common/msgData.h"

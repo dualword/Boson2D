@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           editorCanvas.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef EDITORCANVAS_H 
 #define EDITORCANVAS_H 
 
-#include <qintdict.h>
+#include <Q3Dict>
 
 #include "common/boFile.h"
 
@@ -58,13 +59,13 @@ public:
   bool isModified() {return modified; }
 
 	/* concerning contents */
-	visualFacility	*getFacility(long key) { return facilities.find(key); }
+	visualFacility	*getFacility(long key) { return 0; /*facilities.find(key);*/ }
 	void		changeCell(int x, int y, cell_t c);
 
 public:
 //private:
-	QIntDict<visualMobUnit>		mobiles;
-	QIntDict<visualFacility>	facilities;
+	Q3Dict<visualMobUnit>		mobiles;
+	Q3Dict<visualFacility>	facilities;
 
 private:
 	long		key;

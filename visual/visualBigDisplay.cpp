@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualBigDisplay.cpp  -  description                              
                              -------------------                                         
@@ -20,7 +21,10 @@
 
 #include <assert.h>
 
-#include <kapp.h>
+//#include <kapp.h>
+
+#include <Q3ScrollView>
+#include <QMouseEvent>
 
 #include "common/log.h"
 #include "common/bomap.h"
@@ -30,8 +34,8 @@
 #include "speciesTheme.h"
   
 
-visualBigDisplay::visualBigDisplay(/*orderWin *o,*/ visualTopLevel *v, QWidget*parent, const char *name, WFlags f)
-	: QCanvasView(vcanvas,parent,name,f)
+visualBigDisplay::visualBigDisplay(/*orderWin *o,*/ visualTopLevel *v, QWidget*parent, const char *name, Qt::WindowFlags f)
+	: Q3CanvasView(vcanvas,parent,name,f)
 	, vtl(v)
 {
 
@@ -41,7 +45,7 @@ visualBigDisplay::visualBigDisplay(/*orderWin *o,*/ visualTopLevel *v, QWidget*p
 	setSizePolicy( QSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding) );
 
 // QScrollView stuff 
-setResizePolicy(QScrollView::AutoOne);
+setResizePolicy(Q3ScrollView::AutoOne);
 setVScrollBarMode( AlwaysOff);
 setHScrollBarMode( AlwaysOff);
 
@@ -58,7 +62,7 @@ visualBigDisplay::~visualBigDisplay()
 void visualBigDisplay::viewportMouseMoveEvent(QMouseEvent *e)
 {
 	QPainter p;
-	QPen pen(green, 2);
+	QPen pen();
 	
 	switch( vtl->getSelectionMode()) {
 		default:
@@ -67,8 +71,8 @@ void visualBigDisplay::viewportMouseMoveEvent(QMouseEvent *e)
 			break;
 		case visualTopLevel::SELECT_RECT:
 			p.begin( viewport() );
-			p.setPen(pen);
-			p.setRasterOp(XorROP);
+//			p.setPen(pen);
+//			p.setRasterOp(XorROP);
 			/* erase previous rect */
 			if (oldX != selectX && oldY != selectY)	
 				drawRectSelect(selectX, selectY, oldX, oldY, p);
@@ -97,43 +101,43 @@ void visualBigDisplay::viewportMouseMoveEvent(QMouseEvent *e)
 void visualBigDisplay::viewportMouseReleaseEvent(QMouseEvent *)
 {
 	QPainter p;
-	QPen pen(green, 2);
-
-	switch( vtl->getSelectionMode()) {
-		default:
-			logf(LOG_WARNING, "visualBigDisplay::viewportMouseReleaseEvent : unknown selectionMode(2), mode is %d", vtl->getSelectionMode());
-		case visualTopLevel::SELECT_NONE:
-		case visualTopLevel::SELECT_FILL:
-			break;
-		case visualTopLevel::SELECT_RECT:
-			p.begin(this);
-			p.setPen(pen);
-			p.setRasterOp(XorROP);
-			/* erase rect */
-			if (oldX != selectX && oldY != selectY)	
-				drawRectSelect(selectX, selectY, oldX, oldY, p);
-			p.end();
-		
-			/* generate multiple selection */
-			selectX	+= BO_TILE_SIZE * vtl->X();
-			selectY	+= BO_TILE_SIZE * vtl->Y();
-			oldX	+= BO_TILE_SIZE * vtl->X();
-			oldY	+= BO_TILE_SIZE * vtl->Y();
-			
-			vtl->selectArea(selectX, selectY, oldX, oldY);
-			vcanvas->update();
-
-			break;
-		case visualTopLevel::SELECT_PUT:
-			break;
-			return;
-	}
-	vtl->setSelectionMode( visualTopLevel::SELECT_NONE);
+//	QPen pen(green, 2);
+//
+//	switch( vtl->getSelectionMode()) {
+//		default:
+//			logf(LOG_WARNING, "visualBigDisplay::viewportMouseReleaseEvent : unknown selectionMode(2), mode is %d", vtl->getSelectionMode());
+//		case visualTopLevel::SELECT_NONE:
+//		case visualTopLevel::SELECT_FILL:
+//			break;
+//		case visualTopLevel::SELECT_RECT:
+//			p.begin(this);
+//			p.setPen(pen);
+//			//p.setRasterOp(XorROP);
+//			/* erase rect */
+//			if (oldX != selectX && oldY != selectY)
+//				drawRectSelect(selectX, selectY, oldX, oldY, p);
+//			p.end();
+//
+//			/* generate multiple selection */
+//			selectX	+= BO_TILE_SIZE * vtl->X();
+//			selectY	+= BO_TILE_SIZE * vtl->Y();
+//			oldX	+= BO_TILE_SIZE * vtl->X();
+//			oldY	+= BO_TILE_SIZE * vtl->Y();
+//
+//			vtl->selectArea(selectX, selectY, oldX, oldY);
+//			vcanvas->update();
+//
+//			break;
+//		case visualTopLevel::SELECT_PUT:
+//			break;
+//			return;
+//	}
+//	vtl->setSelectionMode( visualTopLevel::SELECT_NONE);
 }
 
 void visualBigDisplay::resizeEvent(QResizeEvent *e)
 {
-	QCanvasView::resizeEvent(e);
+	Q3CanvasView::resizeEvent(e);
 
 	emit reSizeView (	(width()+BO_TILE_SIZE-1)/BO_TILE_SIZE,
 				(height()+BO_TILE_SIZE-1)/BO_TILE_SIZE  );
@@ -159,71 +163,71 @@ void visualBigDisplay::viewportMousePressEvent(QMouseEvent *e)
 	x = e->x();
 	y = e->y();
 	
-	if (e->button() & MidButton) {
-		emit relativeReCenterView( x/BO_TILE_SIZE , y/BO_TILE_SIZE);
-		return;
-		}
+//	if (e->button() & MidButton) {
+//		emit relativeReCenterView( x/BO_TILE_SIZE , y/BO_TILE_SIZE);
+//		return;
+//		}
 
 	/* Now we transpose coo into the map referential */
 	x += vtl->X()*BO_TILE_SIZE; y += vtl->Y()*BO_TILE_SIZE;
-	
-	if (e->button() & LeftButton) {	
 
-		if (vtl->getSelectionMode() == visualTopLevel::SELECT_PUT) {
-			vtl->object_put(e->x(), e->y());
-			return;
-		}
+//	if (e->button() & LeftButton) {
+//
+//		if (vtl->getSelectionMode() == visualTopLevel::SELECT_PUT) {
+//			vtl->object_put(e->x(), e->y());
+//			return;
+//		}
+//
+//		/* Control -> multiselection, else... */
+//		if (! (e->state()&ControlButton)) {
+//			vtl->unSelectAll();
+//			}
+//
+//		Q3CanvasItem *sfg = vcanvas->findUnitAt( x, y);
+//
+//		if (!sfg) {
+//			// nothing has been found : it's a ground-click
+//			// Here, we have to draw a "selection box"...
+//			vtl->setSelectionMode( visualTopLevel::SELECT_RECT);
+//			oldX = selectX = e->x();
+//			oldY = selectY = e->y();
+//			vtl->unSelectFix();
+//			return;
+//		}
+//
+//
+//		if ( IS_MOBILE(sfg->rtti())) {
+//			visualMobUnit *m = (visualMobUnit *) sfg;
+//
+//			vtl->unSelectFix();
+////			if ((e->state()&ControlButton) && vtl->mobSelected.find(m->key))
+////				vtl->unSelectMob(m->key);
+////			else
+////				vtl->selectMob(m->key, m);
+//
+//			vcanvas->update();
+//			return;
+//		}
+//
+//		if ( IS_FACILITY(sfg->rtti())) {
+//			visualFacility *f = (visualFacility *) sfg;
+//			vtl->unSelectAll();		// anyway
+//			vtl->selectFix(f);
+//
+//			vcanvas->update();
+//			return;
+//		}
+//
+//		// should never be reached !
+//		logf(LOG_ERROR, "visual/fieldEvent.c, unexpeted vcanvas->findUnitAt() result");
+//
+//	} // LeftButton
 
-		/* Control -> multiselection, else... */
-		if (! (e->state()&ControlButton)) {
-			vtl->unSelectAll();
-			}
-	
-		QCanvasItem *sfg = vcanvas->findUnitAt( x, y);
-
-		if (!sfg) {
-			// nothing has been found : it's a ground-click
-			// Here, we have to draw a "selection box"...
-			vtl->setSelectionMode( visualTopLevel::SELECT_RECT);
-			oldX = selectX = e->x();
-			oldY = selectY = e->y();
-			vtl->unSelectFix();
-			return;
-		}
-	
-	
-		if ( IS_MOBILE(sfg->rtti())) {
-			visualMobUnit *m = (visualMobUnit *) sfg;
-	
-			vtl->unSelectFix();
-			if ((e->state()&ControlButton) && vtl->mobSelected.find(m->key))
-				vtl->unSelectMob(m->key);
-			else
-				vtl->selectMob(m->key, m);
-
-			vcanvas->update();
-			return;
-		}
-
-		if ( IS_FACILITY(sfg->rtti())) {
-			visualFacility *f = (visualFacility *) sfg;
-			vtl->unSelectAll();		// anyway 
-			vtl->selectFix(f);
-
-			vcanvas->update();
-			return;
-		}
-
-		// should never be reached !
-		logf(LOG_ERROR, "visual/fieldEvent.c, unexpeted vcanvas->findUnitAt() result");
-	
-	} // LeftButton 
-
-	if (e->button() & RightButton) {
-		actionClicked( x, y, e->state());
-		oldX = x; oldY = y;
-		return;
-		}
+//	if (e->button() & RightButton) {
+//		actionClicked( x, y, e->state());
+//		oldX = x; oldY = y;
+//		return;
+//		}
 	
 }
 

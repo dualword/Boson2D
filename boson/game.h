@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          game.h  -  description                              
                              -------------------                                         
@@ -25,7 +26,7 @@
 #include "connect.h"
 
 class bosonCanvas;
-class KSocket;
+//class KSocket;
 class boBuffer;
 
 #ifndef uint
@@ -39,7 +40,7 @@ typedef unsigned int uint;
 /* synchronization */
 	extern uint			jiffies;
 /* deal with the communication layer */
-	extern KSocket			*Socket;
+	//extern KSocket			*Socket;
 	extern playerSocketState	socketState;
 	extern playerState		State;
 	extern boBuffer			*buffer;

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           bosonTopLevel.cpp  -  description                              
                              -------------------                                         
@@ -18,8 +19,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qpushbutton.h>
-#include <qhbox.h>
+#include <QPushButton>
+#include <Q3HBox>
+#include <QLabel>
 
 #include "common/log.h"
 #include "common/bomap.h"
@@ -34,7 +36,7 @@
 #include "game.h"
 
 
-bosonTopLevel::bosonTopLevel(BosonApp * /*parent*/, const char *name, WFlags f)
+bosonTopLevel::bosonTopLevel(BosonApp * /*parent*/, const char *name, Qt::WindowFlags f)
 	: visualTopLevel(name,f)
 	, mw(this)
 {
@@ -43,34 +45,34 @@ bosonTopLevel::bosonTopLevel(BosonApp * /*parent*/, const char *name, WFlags f)
 	 * remember that bocanvas has been initialised before any bosonTopLevel is created
 	 */
 	QLabel *label;
-	QHBox *qhb;
-	KStatusBar *ksb = statusBar();
+	 Q3HBox *qhb;
+//	KStatusBar *ksb = statusBar();
 
-	qhb   = new QHBox(ksb, "unitsInfoBox");
-	label = new QLabel(" Mobiles : ", qhb);
-	label = new QLabel("?", qhb);
-	connect(bocanvas , SIGNAL(mobileNbUpdated(int)), label, SLOT(setNum(int)));
-	label = new QLabel("  Facilities : ", qhb);
-	label = new QLabel("?", qhb);
-	connect(bocanvas , SIGNAL(facilityNbUpdated(int)), label, SLOT(setNum(int)));
-	ksb->addWidget(qhb);
-
-	qhb   = new QHBox(ksb, "ressourcesInfoBox");
-	label = new QLabel(" Oil : ", qhb);
-	label = new QLabel("?", qhb);
-	connect(bocanvas , SIGNAL(oilUpdated(int)), label, SLOT(setNum(int)));
-	label = new QLabel("  Minerals : ", qhb);
-	label = new QLabel("?", qhb);
-	connect(bocanvas , SIGNAL(mineralUpdated(int)), label, SLOT(setNum(int)));
-	ksb->addWidget(qhb);
-
-	ksb->insertItem( "Boson beginning", 0, 100);
-
-	qhb   = new QHBox(ksb, "pingInfoBox");
-	label = new QLabel(" Server Ping : ", qhb);
-	label = new QLabel("?", qhb);
-	connect(bocanvas , SIGNAL(pingUpdated(int)), label, SLOT(setNum(int)));
-	ksb->addWidget(qhb);
+//	//qhb   = new  Q3HBox(ksb, "unitsInfoBox");
+//	label = new QLabel(" Mobiles : ", qhb);
+//	label = new QLabel("?", qhb);
+//	connect(bocanvas , SIGNAL(mobileNbUpdated(int)), label, SLOT(setNum(int)));
+//	label = new QLabel("  Facilities : ", qhb);
+//	label = new QLabel("?", qhb);
+//	connect(bocanvas , SIGNAL(facilityNbUpdated(int)), label, SLOT(setNum(int)));
+////	ksb->addWidget(qhb);
+//
+//	qhb   = new  Q3HBox(ksb, "ressourcesInfoBox");
+//	label = new QLabel(" Oil : ", qhb);
+//	label = new QLabel("?", qhb);
+//	connect(bocanvas , SIGNAL(oilUpdated(int)), label, SLOT(setNum(int)));
+//	label = new QLabel("  Minerals : ", qhb);
+//	label = new QLabel("?", qhb);
+//	connect(bocanvas , SIGNAL(mineralUpdated(int)), label, SLOT(setNum(int)));
+////	ksb->addWidget(qhb);
+////
+////	ksb->insertItem( "Boson beginning", 0, 100);
+//
+//	qhb   = new  Q3HBox(ksb, "pingInfoBox");
+//	label = new QLabel(" Server Ping : ", qhb);
+//	label = new QLabel("?", qhb);
+//	connect(bocanvas , SIGNAL(pingUpdated(int)), label, SLOT(setNum(int)));
+//	//ksb->addWidget(qhb);
 
 	resize (790, 590);
 

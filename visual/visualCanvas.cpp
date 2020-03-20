@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualCanvas.cpp  -  description                              
                              -------------------                                         
@@ -20,7 +21,7 @@
 
 #include <assert.h>
 
-#include <kapp.h>
+//#include <kapp.h>
 
 #include "common/log.h"
 #include "common/boconfig.h"
@@ -32,7 +33,7 @@
   
 
 visualCanvas::visualCanvas( QPixmap p, uint w, uint h)
-	: QCanvas ( p, w, h, BO_TILE_SIZE, BO_TILE_SIZE)
+	: Q3Canvas ( p, w, h, BO_TILE_SIZE, BO_TILE_SIZE)
 {
 	/* map geometry */
 	maxX = w; maxY = h;
@@ -44,7 +45,7 @@ visualCanvas::visualCanvas( QPixmap p, uint w, uint h)
 
 
 visualCanvas::visualCanvas(void)
-	: QCanvas ()
+	: Q3Canvas ()
 {
 	/* map geometry */
 	maxX = 0; maxY = 0;
@@ -80,8 +81,8 @@ void visualCanvas::resize (int w, int h)
 
 	/* map geometry */
 	maxX = w; maxY = h;
-	QCanvas::resize(w * BO_TILE_SIZE ,h * BO_TILE_SIZE);
-	QCanvas::setTiles( _pm, w, h, BO_TILE_SIZE, BO_TILE_SIZE);
+	Q3Canvas::resize(w * BO_TILE_SIZE ,h * BO_TILE_SIZE);
+	Q3Canvas::setTiles( _pm, w, h, BO_TILE_SIZE, BO_TILE_SIZE);
 	logf(LOG_INFO, "visualCanvas::resize to %d, %d", w, h);
 }
 
@@ -103,10 +104,10 @@ void visualCanvas::setCell(int i, int j, cell_t c)
 
 
 
-QCanvasItem * visualCanvas::findUnitAt(int x, int y)
+Q3CanvasItem * visualCanvas::findUnitAt(int x, int y)
 {
-	QCanvasItemList list = collisions( QPoint(x,y) );
-	QCanvasItemList::Iterator it;
+	Q3CanvasItemList list = collisions( QPoint(x,y) );
+	Q3CanvasItemList::Iterator it;
 
 	for( it = list.begin(); it != list.end(); ++it )
 		if ( IS_UNIT( (*it)->rtti() ) )

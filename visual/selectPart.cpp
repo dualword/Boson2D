@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          selectPart.cpp  -  description                              
                              -------------------                                         
@@ -18,6 +19,9 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <QPainter>
+#include <QBitmap>
+
 #include "common/log.h"
 
 #include "selectPart.h"
@@ -28,19 +32,19 @@
 #define SP_W		(PART_NB*2)
 #define SP_H		(SP_CORNER_LEN+SP_CORNER_POS)
 
-extern QCanvas	*vcanvas;
+extern Q3Canvas	*vcanvas;
 
 static void drawSelectBox(QPainter &painter, bool bw, int power);
-static QCanvasPixmapArray *initStatic(selectPart::sp_type type);
+static Q3CanvasPixmapArray *initStatic(selectPart::sp_type type);
 
-QCanvasPixmapArray * selectPart::qsps_up = 0l;
-QCanvasPixmapArray * selectPart::qsps_down = 0l;
+Q3CanvasPixmapArray * selectPart::qsps_up = 0l;
+Q3CanvasPixmapArray * selectPart::qsps_down = 0l;
 
 /*
  *  selectPart
  */
 selectPart::selectPart(int _f, int _z, sp_type type)
-	: QCanvasSprite(0, vcanvas)
+	: Q3CanvasSprite(0, vcanvas)
 {
 	if (PART_DOWN == type) {
 		if (!qsps_down) qsps_down = initStatic(PART_DOWN);
@@ -95,7 +99,7 @@ void drawSelectBox(QPainter &painter, bool bw, int power)
 }
 
 
-QCanvasPixmapArray *initStatic(selectPart::sp_type type)
+Q3CanvasPixmapArray *initStatic(selectPart::sp_type type)
 {
 	int i;
 	QList<QPixmap>	pixmaps;
@@ -120,8 +124,8 @@ QCanvasPixmapArray *initStatic(selectPart::sp_type type)
 	
 
 
-	pixmaps.setAutoDelete( TRUE ); 
-	points.setAutoDelete( TRUE ); 
+//	pixmaps.setAutoDelete( TRUE );
+//	points.setAutoDelete( TRUE );
 
 	for(i=0; i<PART_NB; i++) {
 		
@@ -141,18 +145,19 @@ QCanvasPixmapArray *initStatic(selectPart::sp_type type)
 
 		/* create entries in QList */
 		pix = new QPixmap(*_pix);
-		pixmaps.append (pix);
-
-		if (selectPart::PART_DOWN == type)
-			point = new QPoint(1, SP_H-2 - SP_CORNER_POS);
-		else
-			point = new QPoint(SP_W-2, SP_CORNER_POS);
-		points.append (point);
+//		pixmaps.append (pix);
+//
+//		if (selectPart::PART_DOWN == type)
+//			point = new QPoint(1, SP_H-2 - SP_CORNER_POS);
+//		else
+//			point = new QPoint(SP_W-2, SP_CORNER_POS);
+//		points.append (point);
 		}
 
 	delete _pix;
 
-	return new QCanvasPixmapArray(pixmaps,points);
+	//return new Q3CanvasPixmapArray(pixmaps,points);
+	return 0;
 
 }
 

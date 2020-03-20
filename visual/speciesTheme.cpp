@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                       speciesTheme.cpp  -  description                              
                              -------------------                                         
@@ -18,11 +19,11 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qbitmap.h>
-#include <qwmatrix.h>
-#include <qbitarray.h>
-#include <qimage.h>
-#include <qcanvas.h>
+#include <QBitmap>
+#include <QMatrix>
+#include <QBitArray>
+#include <QImage>
+#include <Q3Canvas>
 
 #include "common/log.h"
 #include "common/unit.h"
@@ -41,8 +42,8 @@ speciesTheme::speciesTheme(char *themeName, QRgb color)
 	fixSmallOverview	= new QPixmap*[facilityPropNb];
 
 
-	mobSprite		= new QCanvasPixmapArray*[mobilePropNb];
-	fixSprite		= new QCanvasPixmapArray*[facilityPropNb];
+	mobSprite		= new Q3CanvasPixmapArray*[mobilePropNb];
+	fixSprite		= new Q3CanvasPixmapArray*[facilityPropNb];
 
 
 	mobiles			= new QBitArray(mobilePropNb);
@@ -51,7 +52,7 @@ speciesTheme::speciesTheme(char *themeName, QRgb color)
 	boAssert ( mobiles->fill(false) );
 	boAssert ( facilities->fill(false) );
 
-	themePath	= *dataPath + "themes/species/";
+	themePath	= "data/themes/species/"; //*dataPath +
 	themePath	+= themeName;
 	themePath	+= "/";
 
@@ -67,14 +68,14 @@ speciesTheme::~speciesTheme()
 	unsigned int i, n;
 	
 	for (i=0, n = mobiles->size(); i<n; i++)
-		if (mobiles[i]) {
+		if (mobiles->at(i)) {
 			delete mobSprite[i];
 			delete mobSmallOverview[i];
 			delete mobBigOverview[i];
 		}
 
 	for (i=0, n = facilities->size(); i<n; i++)
-		if (mobiles[i]) {
+		if (mobiles->at(i)) {
 			delete fixSprite[i];
 			delete fixSmallOverview[i];
 			delete fixBigOverview[i];
@@ -95,8 +96,8 @@ speciesTheme::~speciesTheme()
 bool speciesTheme::loadMob(int index)
 {
 int j;
-QList<QPixmap>	pix_l;
-QList<QPoint>	point_l;
+QList<QPixmap*>	pix_l;
+QList<QPoint*>	point_l;
 QPixmap		*p;
 QPoint		*pp;
 char		buffer[100];
@@ -115,7 +116,7 @@ for(j=0; j<PIXMAP_PER_MOBILE; j++) {
 	point_l.append(pp);
 }
 
-mobSprite[index] = new QCanvasPixmapArray(pix_l, point_l);
+//mobSprite[index] = new Q3CanvasPixmapArray(pix_l, point_l);
 
 /* big overview */
 if (!loadPixmap(path + "/overview.big.bmp", &mobBigOverview[index], false)) {
@@ -218,8 +219,8 @@ bool speciesTheme::loadPixmap(const QString &path, QPixmap **pix, bool withMask,
 bool speciesTheme::loadFix(int i)
 {
 int j;
-QList<QPixmap>	pix_l;
-QList<QPoint>	point_l;
+QList<QPixmap*>	pix_l;
+QList<QPoint*>	point_l;
 QPixmap		*p;
 QPoint		*pp;
 char		buffer[100];
@@ -237,7 +238,7 @@ for(j=0; j< PIXMAP_PER_FIX ; j++) {
 	point_l.append(pp);
 	}
 
-fixSprite[i] = new QCanvasPixmapArray(pix_l, point_l);
+//fixSprite[i] = new Q3CanvasPixmapArray(pix_l, point_l);
 
 /* big overview */
 if (!loadPixmap(path + "/overview.big.bmp", &fixBigOverview[i], false)) {
@@ -304,7 +305,7 @@ QPixmap	* speciesTheme::getSmallOverview(facilityType unit)
 /*
  *   Main Pixmaps
  */
-QCanvasPixmapArray *speciesTheme::getPixmap(mobType unit)
+Q3CanvasPixmapArray *speciesTheme::getPixmap(mobType unit)
 {
 	if (!mobiles->testBit(unit))
 		loadMob(unit);
@@ -314,7 +315,7 @@ QCanvasPixmapArray *speciesTheme::getPixmap(mobType unit)
 }
 
 
-QCanvasPixmapArray *speciesTheme::getPixmap(facilityType unit)
+Q3CanvasPixmapArray *speciesTheme::getPixmap(facilityType unit)
 {
 	if (!facilities->testBit(unit))
 		loadFix(unit);

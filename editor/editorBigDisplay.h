@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           editorBigDisplay.h  -  description                              
                              -------------------                                         
@@ -35,7 +36,7 @@ class editorBigDisplay : public visualBigDisplay
 	Q_OBJECT
 
 public:
-	editorBigDisplay(editorTopLevel *v, QWidget *parent=0, const char *name=0L, WFlags f=0);
+	editorBigDisplay(editorTopLevel *v, QWidget *parent=0, const char *name=0L, Qt::WindowFlags f=0);
 
 	virtual void actionClicked(int, int, int state);	// selecting, moving...
 

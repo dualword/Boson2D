@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           main.cpp  -  description                              
                              -------------------                                         
@@ -25,10 +26,10 @@
 #include <config.h>
 #endif
 
-#include <klocale.h>
-#include <kcmdlineargs.h>
-#include <kaboutdata.h>
-#include <kstddirs.h>
+//#include <klocale.h>
+//#include <kcmdlineargs.h>
+//#include <kaboutdata.h>
+//#include <kstddirs.h>
 
 #include "common/log.h"
 #include "editorCanvas.h"
@@ -43,37 +44,38 @@ editorCanvas *ecanvas;
  
 extern QPixmap *bigBackground;
 
-int main(/*int argc, char* argv[] */)
+int main(int argc, char* argv[])
 { 
-	KAboutData aboutData(
-		"boeditor"
-		, I18N_NOOP("Boson level editor")
-		, VERSION
-		, I18N_NOOP("A level editor for the boson game")
-		, KAboutData::License_GPL
-		, "(c) 1999-2000, The boson team"
-		, 0l
-		, "http://boson.eu.org"
-		, "boson-fb@yalbi.com" );
-	   
-	aboutData.addAuthor("Thomas Capricelli", I18N_NOOP("Game Design & Coding"), "orzel@yalbi.com", "http://aquila.rezel.enst.fr/thomas/");
-	aboutData.addAuthor("Benjamin Adler", I18N_NOOP("Graphics & Homepage Design"), "benadler@bigfoot.de");
-		                                                              
-	static char *fake_arg= (char*)"boeditor";
-	KCmdLineArgs::init( 1, &fake_arg, &aboutData );
+//	KAboutData aboutData(
+//		"boeditor"
+//		, I18N_NOOP("Boson level editor")
+//		, VERSION
+//		, I18N_NOOP("A level editor for the boson game")
+//		, KAboutData::License_GPL
+//		, "(c) 1999-2000, The boson team"
+//		, 0l
+//		, "http://boson.eu.org"
+//		, "boson-fb@yalbi.com" );
+//
+//	aboutData.addAuthor("Thomas Capricelli", I18N_NOOP("Game Design & Coding"), "orzel@yalbi.com", "http://aquila.rezel.enst.fr/thomas/");
+//	aboutData.addAuthor("Benjamin Adler", I18N_NOOP("Graphics & Homepage Design"), "benadler@bigfoot.de");
+//
+//	static char *fake_arg= (char*)"boeditor";
+//	KCmdLineArgs::init( 1, &fake_arg, &aboutData );
 	//KCmdLineArgs::init( argc, argv, &aboutData );
 
-	BoEditorApp app;
+	BoEditorApp app(argc,argv);
  
 	//BoEditorApp* boEditor = new BoEditorApp( (argc>1)?argv[1]:0l);
 
 
 	/* find dataPath */
-	QString path = KGlobal::instance()->dirs()->findResourceDir("data", "boson/map/basic.bpf") + "boson/";
+	QString path = "data/map/basic.bpf"; //KGlobal::instance()->dirs()->findResourceDir("data", "boson/map/basic.bpf") + "boson/";
 	dataPath = &path;	 // local variable to main are 'almost' global
 
 	/* XXX orzel : temp, until GUI is really functionnal */
-	QString themePath = *dataPath +  "themes/grounds/earth.png";
+	//QString themePath = *dataPath +  "themes/grounds/earth.png";
+	QString themePath = "data/themes/grounds/earth.png";
 //	printf("loading groundTheme : %s\n", themePath.latin1() );
 	bigBackground = new QPixmap(themePath);
 	if (bigBackground->isNull() ) {

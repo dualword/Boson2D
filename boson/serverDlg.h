@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          serverDlg.h  -  description                              
                              -------------------                                         
@@ -21,13 +22,12 @@
 #ifndef SERVER_DLG_H 
 #define SERVER_DLG_H 
 
-#include <qdialog.h>
+#include <QDialog>
 
 class QLineEdit;
 class QPushButton;
 class QLabel;
 class KProcess;
-
 
 class serverDlg : public QDialog 
 {

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualMiniDisplay.h  -  description                              
                              -------------------                                         
@@ -23,7 +24,7 @@
 
 #include "common/groundType.h"
 
-#include <qwidget.h>
+#include <QWidget>
 //#include <qframe.h> ///orzel qwidget.h XXXX
 
 class Unit;

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           speciesTheme.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,8 @@
 #ifndef SPECIESTHEME_H 
 #define SPECIESTHEME_H 
 
-#include <qstring.h>
+#include <QString>
+#include <QRgb>
 
 #include "common/unitType.h"
 #include "common/unit.h"
@@ -29,7 +31,7 @@
 class QString;
 class QBitArray;
 class QPixmap;
-class QCanvasPixmapArray;
+class Q3CanvasPixmapArray;
 
 /** 
   * This class handles the drawing of the different units for a given specy(ie?)
@@ -40,8 +42,8 @@ public:
 	speciesTheme(char *themeName, QRgb c);
 	~speciesTheme();
 
-	QCanvasPixmapArray *getPixmap(mobType unit);
-	QCanvasPixmapArray *getPixmap(facilityType unit);
+	Q3CanvasPixmapArray *getPixmap(mobType unit);
+	Q3CanvasPixmapArray *getPixmap(facilityType unit);
 
 	QPixmap		*getBigOverview(mobType unit);
 	QPixmap		*getBigOverview(facilityType unit);
@@ -72,7 +74,7 @@ private:
 	QPixmap		**mobSmallOverview;	// pixmaps for the control panel
 	QPixmap		**fixSmallOverview;	// pixmaps for the control panel
 
-	QCanvasPixmapArray
+	Q3CanvasPixmapArray
 			**mobSprite,		// all sprites for a given mobile
 			**fixSprite;		// all sprites for a giver facility
 

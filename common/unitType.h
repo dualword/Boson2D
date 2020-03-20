@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           unitType.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef UNITTYPE_H 
 #define UNITTYPE_H 
 
-#include <qpoint.h>
+#include <QPoint>
 
 #include "groundType.h"
 

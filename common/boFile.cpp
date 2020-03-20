@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          boFile.cpp  -  description                              
                              -------------------                                         
@@ -18,8 +19,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qdatastream.h>
-#include <qfile.h>
+#include <QDataStream>
+#include <QFile>
 
 #include "common/log.h"
 #include "common/msgData.h"
@@ -53,7 +54,7 @@ bool boFile::openRead(const char *filename)
 
 	/* open  stream */
 	f = new QFile(filename);
-	if (!f->open(IO_ReadOnly)){
+	if (!f->open(QIODevice::ReadOnly)){
 		logf(LOG_ERROR, "boFile : Can't open file \"%s\"", filename);
 		return false;
 		}
@@ -102,7 +103,7 @@ bool boFile::openWrite(const char *filename)
 
 	/* open  stream */
 	f = new QFile(filename);
-	if (!f->open(IO_WriteOnly)){
+	if (!f->open(QIODevice::WriteOnly)){
 		puts("boFile : Can't open file");
 		return false;
 		}

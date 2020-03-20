@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          boshot  -  description                              
                              -------------------                                         
@@ -20,17 +21,17 @@
 
 #include <stdlib.h>		// random.
 
-#include <qimage.h>
+#include <QImage>
 
 #include "common/log.h"
 #include "boshot.h"
 #include "visual.h"
 
 
-QCanvasPixmapArray	*boShot::shotSequ;
+Q3CanvasPixmapArray	*boShot::shotSequ;
 
-QCanvasPixmapArray	*boShot::unitSequ[UNITS_SHOTS_NB];
-QCanvasPixmapArray	*boShot::fixSequ[FIX_SHOTS_NB];
+Q3CanvasPixmapArray	*boShot::unitSequ[UNITS_SHOTS_NB];
+Q3CanvasPixmapArray	*boShot::fixSequ[FIX_SHOTS_NB];
 
 QBitArray		boShot::qba_units(UNITS_SHOTS_NB);
 QBitArray		boShot::qba_fix(FIX_SHOTS_NB);
@@ -46,7 +47,7 @@ static bool loadPixmap(const QString &path, QPixmap **pix);	// load one frame of
  *  boshot
  */
 boShot::boShot(int _x, int _y, int _z, shot_style style)
-	: QCanvasSprite (0, vcanvas)
+	: Q3CanvasSprite (0, vcanvas)
 {
 
 	int	version;
@@ -105,7 +106,7 @@ void  boShot::timerEvent( QTimerEvent * )
 		setFrame(counter);
 		return;
 	}
-	killTimers();
+	//killTimers();
 	delete this;
 }
 
@@ -128,11 +129,11 @@ bool boShot::loadSmall()
 			logf(LOG_ERROR, "boshot::loadBig Can't load %s.%04d.bmp  ...\n", (const char *)path, j);
 			return false;
 		}
-		pix_l.append(p);
+		//pix_l.append(p);
 		pp = new QPoint( p->width() >> 1, p->height() >> 1); // hotspot in the center
-		point_l.append(pp);
+		//point_l.append(pp);
 	}
-	shotSequ = new QCanvasPixmapArray(pix_l, point_l);
+	///shotSequ = new Q3CanvasPixmapArray(pix_l, point_l);
 	return true;
 }
 
@@ -185,9 +186,9 @@ bool boShot::loadBig(shot_style style, int version)
 			logf(LOG_ERROR, "boshot::loadBig Can't load %s.%04d.bmp...\n", (const char *)path, j);
 			return false;
 		}
-		pix_l.append(p);
+		//pix_l.append(p);
 		pp = new QPoint( p->width() >> 1, p->height() >> 1); // hotspot in the center
-		point_l.append(pp);
+		//point_l.append(pp);
 	}
 
 	switch(style) {
@@ -195,12 +196,12 @@ bool boShot::loadBig(shot_style style, int version)
 			logf(LOG_ERROR, "unexpected style in boShot,loadBig(2)");
 			return false;
 		case SHOT_UNIT:
-			unitSequ[version] = new QCanvasPixmapArray(pix_l, point_l);
+			//unitSequ[version] = new Q3CanvasPixmapArray(pix_l, point_l);
 			qba_units.setBit(version);
 			break;
 
 		case SHOT_FACILITY:
-			fixSequ[version] = new QCanvasPixmapArray(pix_l, point_l);
+			//fixSequ[version] = new Q3CanvasPixmapArray(pix_l, point_l);
 			qba_fix.setBit(version);
 			break;
 	}

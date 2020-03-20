@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualUnit.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,7 @@
 #ifndef VISUALUNIT_H 
 #define VISUALUNIT_H 
 
-#include <qcanvas.h>
+#include <Q3CanvasSprite>
 
 #include "common/unit.h"
 #include "sprites.h"
@@ -32,10 +33,10 @@
 class selectPart;
 
 
-class visualUnit : public QCanvasSprite
+class visualUnit : public Q3CanvasSprite
 {
 public:
-	visualUnit(QCanvasPixmapArray* s) : QCanvasSprite(s, vcanvas)
+	visualUnit(Q3CanvasPixmapArray* s) : Q3CanvasSprite(s, vcanvas)
 		{ power = POWER_LEVELS-1; sp_down = 0l; sp_up = 0l; contain = 0; _destroyed=false; show(); }
 	
 	void	unSelect();

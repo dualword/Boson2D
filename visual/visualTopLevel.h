@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualTopLevel.h  -  description                              
                              -------------------                                         
@@ -21,7 +22,11 @@
 #ifndef VISUALTOPLEVEL_H 
 #define VISUALTOPLEVEL_H 
 
-#include <ktmainwindow.h>
+//#include <ktmainwindow.h>
+
+#include <QMainWindow>
+#include <Q3Dict>
+#include <Q3DictIterator>
 
 #include <visualUnit.h>
 
@@ -32,12 +37,12 @@
   * 
   * it inherits from KMainWindow only because it will _also_ be part of the GUI in boson or boeditor
   */
-class visualTopLevel : public KMainWindow
+class visualTopLevel : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	visualTopLevel( const char *name = 0L, WFlags f = WDestructiveClose );
+	visualTopLevel( const char *name = 0L,  Qt::WindowFlags flags = Qt::WDestructiveClose );
 
 	/*
 	 * size / position handling
@@ -105,7 +110,7 @@ public:
 
 public: ///orzel : bof...
 	visualFacility		*fixSelected;
-	QIntDict<visualMobUnit>	mobSelected;
+	 Q3Dict<visualMobUnit>	mobSelected;
 	int			selectionWho; // -1 is nobody
 protected:
 	selectionMode_t		selectionMode;

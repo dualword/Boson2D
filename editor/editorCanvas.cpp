@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           editorCanvas.cpp  -  description                              
                              -------------------                                         
@@ -46,40 +47,40 @@ bool editorCanvas::Load(QString filename)
 
 	freeRessources();
 
-	if (!openRead(filename.data())) return false;
+	//if (!openRead(filename.data())) return false;
 
-	/* QCanvas configuratoin */
-	resize(map_width, map_height);
-	emit syncMini();	// let the miniMap synchronized with the new parameters
-
-	/* initialisation */
-	for (i=0; i< map_width; i++)
-		for (j=0; j< map_height; j++) {
-			boFile::load( c);
-			setCell( i, j, c); // XXX can't this loading be done in visual now ? 
-		}
-	
-	/* checking */
-	for (int i=0; i< 3; i++)
-		for (int j=0; j< 3; j++)
-			boAssert ( ground (tile(i,j)) );
-
-
-	for (i=0; i<nbMobiles; i++) {
-		boFile::load(mob);
-		if (!isOk()) return false;
-		createMobUnit(mob);
-	}
-
-	for (i=0; i<nbFacilities; i++) {
-		boFile::load(fix);
-		if (!isOk()) return false;
-		createFixUnit(fix);
-	}
-
-	// ok, it's all right
-	Close();
-	modified = false;
+//	/* QCanvas configuratoin */
+//	resize(map_width, map_height);
+//	emit syncMini();	// let the miniMap synchronized with the new parameters
+//
+//	/* initialisation */
+//	for (i=0; i< map_width; i++)
+//		for (j=0; j< map_height; j++) {
+//			boFile::load( c);
+//			setCell( i, j, c); // XXX can't this loading be done in visual now ?
+//		}
+//
+//	/* checking */
+//	for (int i=0; i< 3; i++)
+//		for (int j=0; j< 3; j++)
+//			boAssert ( ground (tile(i,j)) );
+//
+//
+//	for (i=0; i<nbMobiles; i++) {
+//		boFile::load(mob);
+//		if (!isOk()) return false;
+//		createMobUnit(mob);
+//	}
+//
+//	for (i=0; i<nbFacilities; i++) {
+//		boFile::load(fix);
+//		if (!isOk()) return false;
+//		createFixUnit(fix);
+//	}
+//
+//	// ok, it's all right
+//	Close();
+//	modified = false;
 	update();
 	return isOk();
 }
@@ -90,28 +91,28 @@ bool editorCanvas::Save(QString filename)
 	int i,j;
 	mobileMsg_t	mob;
 	facilityMsg_t	fix;
-	QIntDictIterator<visualMobUnit> mobIt(mobiles);
-	QIntDictIterator<visualFacility> fixIt(facilities);
+//	Q3IntDictIterator<visualMobUnit> mobIt(mobiles);
+//	Q3IntDictIterator<visualFacility> fixIt(facilities);
+//
+//	nbMobiles = (int)mobiles.count();
+//	nbFacilities = (int)facilities.count();
+//
+//	///if (!openWrite(filename.data())) return false;
+//
+//	/* initialisation */
+//	for (i=0; i< map_width; i++)
+//		for (j=0; j< map_height; j++)
+//			write( (cell_t) tile(i,j));
+//
+//	for (mobIt.toFirst(); mobIt; ++mobIt) {
+//		mobIt.current()->fill(mob);
+//		boFile::write(mob);
+//		}
 
-	nbMobiles = (int)mobiles.count();
-	nbFacilities = (int)facilities.count();
-
-	if (!openWrite(filename.data())) return false;
-
-	/* initialisation */
-	for (i=0; i< map_width; i++)
-		for (j=0; j< map_height; j++)
-			write( (cell_t) tile(i,j));
-	
-	for (mobIt.toFirst(); mobIt; ++mobIt) {
-		mobIt.current()->fill(mob);
-		boFile::write(mob);
-		}
-
-	for (fixIt.toFirst(); fixIt; ++fixIt) {
-		fixIt.current()->fill(fix);
-		boFile::write(fix);
-		}
+//	for (fixIt.toFirst(); fixIt; ++fixIt) {
+//		fixIt.current()->fill(fix);
+//		boFile::write(fix);
+//		}
 
 
 	// ok, it's all right
@@ -164,7 +165,7 @@ void editorCanvas::createMobUnit(mobileMsg_t &msg)
 	msg.key = key++;
 
 	m = new visualMobUnit(&msg);
-	mobiles.insert(msg.key, m);
+	//mobiles.insert(msg.key, m);
 
 	modified = true;
 //	emit updateMobile(m);
@@ -179,7 +180,7 @@ void editorCanvas::createFixUnit(facilityMsg_t &msg)
 	msg.state = CONSTRUCTION_STEPS - 1 ;
 
 	f = new visualFacility(&msg);
-	facilities.insert(msg.key, f);
+	//facilities.insert(msg.key, f);
 
 	modified = true;
 //	emit updateFix(f);

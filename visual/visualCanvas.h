@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           visualCanvas.h  -  description                              
                              -------------------                                         
@@ -22,9 +23,9 @@
 #define VISUALCANVAS_H 
 
 
-#include <qobject.h>
-#include <qintdict.h>
-#include <qcanvas.h>
+#include <QObject>
+#include <Q3Dict>
+#include <Q3Canvas>
 
 #include "common/groundType.h"
 
@@ -38,7 +39,7 @@ class visualMobUnit;
 /** 
   * This class encapsulate the "physical" idea of the map : size, contents..
   */
-class visualCanvas : public QCanvas
+class visualCanvas : public Q3Canvas
 {
 
 	Q_OBJECT
@@ -52,7 +53,7 @@ public:
 
 	void setCell(int i, int j, cell_t c);
 	/** find the unit at this position */
-	QCanvasItem		*findUnitAt(int x, int y);
+	Q3CanvasItem	*findUnitAt(int x, int y);
 	groundType		groundAt(QPoint pos) {return ground((cell_t)tile( pos.x(), pos.y())) ;}
 	
 	virtual void resize (int, int);

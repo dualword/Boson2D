@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           boson.h  -  description                              
                              -------------------                                         
@@ -22,14 +23,15 @@
 #define BOSON_H 
  
 // include files for QT
-#include <qlist.h>
+#include <QApplication>
+#include <QList>
 // include files for KDE 
-#include <kapp.h> 
+//#include <kapp.h>
 // application specific includes
 #include "common/msgData.h"
 
 
-class KSocket;
+//class KSocket;
 class KProcess;
 class bosonTopLevel;
 
@@ -38,29 +40,29 @@ class bosonTopLevel;
  * The boson Application : handle the different communication layers
  *
  */
-class BosonApp : public KApplication
+class BosonApp : public QApplication
 {
 	Q_OBJECT
 
 public:
 	/** construtor */
-	BosonApp(void); 
+	BosonApp(int &argc, char **argv);
 	/** destructor */
 	~BosonApp();
 
 protected slots:
-	/** first communication layer : socket */
-	void handleSocketMessage(KSocket *);
-
-	/** slots used when the connection is lost, whoever detected this */
-	void connectionLost(KSocket *s);
-
-	/** called whenever the server launched by serverDlg died */
-	void serverDied(KProcess *);
+//	/** first communication layer : socket */
+//	void handleSocketMessage(KSocket *);
+//
+//	/** slots used when the connection is lost, whoever detected this */
+//	void connectionLost(KSocket *s);
+//
+//	/** called whenever the server launched by serverDlg died */
+//	void serverDied(KProcess *);
 
 private:
 	/** socket initialisation : try to connect to the BosonServer */
-	void initSocket(char *servername=0l);
+	//void initSocket(char *servername=0l);
 	/** second communication layer : client/server */
 	void handleDialogMessage(bosonMsgTag, int, bosonMsgData *);
 

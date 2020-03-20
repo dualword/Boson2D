@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           editorBigDisplay.cpp  -  description                              
                              -------------------                                         
@@ -26,7 +27,7 @@
 #include "editorBigDisplay.h"
 #include "editorCanvas.h"
 
-editorBigDisplay::editorBigDisplay(editorTopLevel *v, QWidget *p, const char *n, WFlags f)
+editorBigDisplay::editorBigDisplay(editorTopLevel *v, QWidget *p, const char *n, Qt::WindowFlags f)
 	:visualBigDisplay(v,p,n,f)
 {
 
@@ -57,7 +58,7 @@ void editorBigDisplay::actionClicked(int mx, int my, int state)
 			if ( IS_BIG_TRANS(ground(c)) )
 			       if ( x+1>=_canvas->maxX || y+1>=_canvas->maxY) return;
 
-			if ( IS_PLAIN(ground(c)) && (state&ShiftButton) ) {
+			if ( IS_PLAIN(ground(c)) && (state&Qt::ShiftButton) ) {
 				int i,j;
 				for (i=-2; i< 3; i++)
 					if (x+i>=0 && x+i<_canvas->maxX)

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           bosonField.cpp  -  description                              
                              -------------------                                         
@@ -24,9 +25,9 @@
 
 #include "common/log.h"
 #include "common/boconfig.h" // MAX_PLAYERS
-#include "common/map.h"
+//#include "common/map.h"
 
-#include "bosonField.h"
+///include "bosonField.h"
 #include "boshot.h"
 #include "game.h" 	// who_am_i
   

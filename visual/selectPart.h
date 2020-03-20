@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          selectPart.h  -  description                              
                              -------------------                                         
@@ -22,14 +23,14 @@
 #define SELECTPART_H 
 
 
-#include <qcanvas.h>
+#include <Q3Canvas>
 #include "sprites.h"		// S_PART
 #include "common/unit.h"	// POWER_LEVELS
 
 
 #define PART_NB		(POWER_LEVELS)
 
-class selectPart : public QCanvasSprite
+class selectPart : public Q3CanvasSprite
 {
 public:
 	enum sp_type { PART_UP, PART_DOWN};
@@ -38,8 +39,8 @@ public:
 	
 	virtual int rtti() const { return S_PART; } /* Qcanvas stuff */
 private:
-	static QCanvasPixmapArray	*qsps_up;
-	static QCanvasPixmapArray	*qsps_down;
+	static Q3CanvasPixmapArray	*qsps_up;
+	static Q3CanvasPixmapArray	*qsps_down;
 	
 };
 

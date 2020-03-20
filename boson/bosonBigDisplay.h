@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           bosonBigDisplay.h  -  description                              
                              -------------------                                         
@@ -30,7 +31,7 @@ class bosonBigDisplay : public visualBigDisplay
   Q_OBJECT
 
 public:
-	bosonBigDisplay(bosonTopLevel *v, QWidget *parent=0, const char *name=0L, WFlags f=0);
+	bosonBigDisplay(bosonTopLevel *v, QWidget *parent=0, const char *name=0L, Qt::WindowFlags f=0);
 	/* from display classes */
 	virtual void actionClicked(int, int, int state);	// selecting, moving...
 

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          newDlg.cpp  -  description                              
                              -------------------                                         
@@ -18,12 +19,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <qpushbutton.h>
-#include <qlabel.h>
-#include <qscrollbar.h>
-#include <qpixmap.h>
-#include <qcombobox.h>
-#include <qlineedit.h> 
+#include <QPushButton>
+#include <QLabel>
+#include <QScrollBar>
+#include <QPixmap>
+#include <QComboBox>
+#include <QLineEdit>
 
 #include "newDlg.h"
 
@@ -58,13 +59,13 @@ newDlg::newDlg(QWidget *parent, const char *name)
 
 	label = new QLabel("Width :", this);
 	label->setGeometry( 360,  130, 60, 30);
-	label->setAlignment(AlignVCenter | AlignLeft);
+	label->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
 
 	_width = new QLabel("150", this);
 	_width->setGeometry( 420,  130, 60, 30);
-	_width->setAlignment(AlignVCenter | AlignLeft);
+	_width->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
 
-	scb_width  = new QScrollBar( 50, 300, 1, 20, 150, QScrollBar::Horizontal, this, "width slider");
+	scb_width  = new QScrollBar( 50, 300, 1, 20, 150, Qt::Horizontal, this, "width slider");
 	scb_width->setGeometry( 360, 160, 190, 15);
 
 	connect( scb_width, SIGNAL(valueChanged(int)), _width, SLOT(setNum(int)));
@@ -73,13 +74,13 @@ newDlg::newDlg(QWidget *parent, const char *name)
 
 	label = new QLabel("Height :", this);
 	label->setGeometry( 360, 180, 60, 30);
-	label->setAlignment(AlignVCenter | AlignLeft);
+	label->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
 
 	_height = new QLabel("150", this);
 	_height->setGeometry( 420,  180, 60, 30);
-	_height->setAlignment(AlignVCenter | AlignLeft);
+	_height->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
 
-	scb_height = new QScrollBar( 50, 300, 1, 20, 150, QScrollBar::Horizontal, this, "height scrollbar");
+	scb_height = new QScrollBar( 50, 300, 1, 20, 150, Qt::Horizontal, this, "height scrollbar");
 	scb_height->setGeometry( 360, 210, 190, 15);
 
 	connect( scb_height, SIGNAL(valueChanged(int)), _height, SLOT(setNum(int)));
@@ -91,7 +92,7 @@ newDlg::newDlg(QWidget *parent, const char *name)
 	_pixLabel->setGeometry(10, 10, 310, 310);
 	_pixLabel->setFrameStyle(QFrame::WinPanel|QFrame::Raised);
 	_pixLabel->setLineWidth(4);
-	_pixLabel->setAlignment(AlignVCenter | AlignHCenter);
+	_pixLabel->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 	pix = new QPixmap();
 	redrawPreview();
 

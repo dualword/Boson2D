@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           boson.cpp  -  description                              
                              -------------------                                         
@@ -21,14 +22,14 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include <qframe.h>
+#include <QFrame>
 
-#include <kmessagebox.h>
-#include <klocale.h>
-#include <kmenubar.h>
-#include <khelpmenu.h>
-#include <kstddirs.h>
-#include <kinstance.h>   
+//#include <kmessagebox.h>
+//#include <klocale.h>
+//#include <kmenubar.h>
+//#include <khelpmenu.h>
+//#include <kstddirs.h>
+//#include <kinstance.h>
 
 #include "common/boconfig.h"
 #include "common/log.h"
@@ -38,14 +39,14 @@
 #include "boson.h"
 #include "ressource.h"
 #include "game.h"
-#include "connectDlg.h"
+//#include "connectDlg.h"
 
 
 FILE *logfile = (FILE *) 0L;
 /* the different topLevel Window */
 QList<bosonTopLevel>	topLevels;
 
-BosonApp::BosonApp()
+BosonApp::BosonApp(int &argc, char **argv) : QApplication(argc, argv)
 {
 
 	/* logfile handling */
@@ -57,14 +58,14 @@ BosonApp::BosonApp()
 	logf(LOG_INFO, "========= New Log File ==============");
 
 	/* find the boson data dir */
-	dataPath = new QString(KGlobal::instance()->dirs()->findResourceDir("data", "boson/map/basic.bpf") + "boson/"); 
+	//dataPath = new QString(KGlobal::instance()->dirs()->findResourceDir("data", "boson/map/basic.bpf") + "boson/");
 	logf(LOG_INFO, "dataPath initialised at %s", dataPath->latin1());
 
 	/* application initialisation */
 	init();
 
 	/* first window */
-	initSocket(); 	// XXX temporary : should be moved
+	//initSocket(); 	// XXX temporary : should be moved
 }
 
 BosonApp::~BosonApp()
@@ -79,23 +80,23 @@ void BosonApp::init()
 }
 
 
-void BosonApp::initSocket(char *servername)
-{ 
-
-	int ret;
-	connectDlg *dlg;
-
-	/* find a connection to a server */
-	dlg = new connectDlg(this, servername, "connect_0");
-	ret = dlg->exec();
-	delete dlg;
-
-	if ( ret != QDialog::Accepted ) {
-		logf(LOG_ERROR, "initSocket : connectDlg rejected with value %d", ret);
-		return;
-	}
-	logf(LOG_INFO, "initSocket : connectDlg accepted, going on");
-}
+//void BosonApp::initSocket(char *servername)
+//{
+//
+//	int ret;
+//	connectDlg *dlg;
+//
+//	/* find a connection to a server */
+//	dlg = new connectDlg(this, servername, "connect_0");
+//	ret = dlg->exec();
+//	delete dlg;
+//
+//	if ( ret != QDialog::Accepted ) {
+//		logf(LOG_ERROR, "initSocket : connectDlg rejected with value %d", ret);
+//		return;
+//	}
+//	logf(LOG_INFO, "initSocket : connectDlg accepted, going on");
+//}
 
 
 void BosonApp::initCanvas(int w, int h)
@@ -115,22 +116,22 @@ void BosonApp::initCanvas(int w, int h)
 
 	bosonTopLevel *btl = new bosonTopLevel(this);
 	btl->show();
-	topLevels.append(btl);
+	//topLevels.append(btl);
 	logf(LOG_INFO, "canvas and first TopLevel window created");
 
 }
 
-
-void BosonApp::serverDied(KProcess *)
-{
-	logf(LOG_FATAL,"boson : server died unexpectedly ");
-  	KMessageBox::error(0l ,
-			"The server has died unexpectedly, please report the bug"
-			"to the author <orzel@yalbi.com>. Please send the boson-server.log"
-			"and boson-client.log you may find in the directory from where"
-		        "you've launched boson (probably your home if you've used a menu entry",
-			"unexpected server death"
-			);
-	return;
-}
+//
+//void BosonApp::serverDied(KProcess *)
+//{
+//	logf(LOG_FATAL,"boson : server died unexpectedly ");
+////  	KMessageBox::error(0l ,
+////			"The server has died unexpectedly, please report the bug"
+////			"to the author <orzel@yalbi.com>. Please send the boson-server.log"
+////			"and boson-client.log you may find in the directory from where"
+////		        "you've launched boson (probably your home if you've used a menu entry",
+////			"unexpected server death"
+////			);
+//	return;
+//}
 

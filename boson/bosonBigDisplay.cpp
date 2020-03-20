@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                        bosonBigDisplay.cpp  -  description                              
                              -------------------                                         
@@ -27,7 +28,7 @@
 #include "game.h"
 
 
-bosonBigDisplay::bosonBigDisplay(bosonTopLevel *btl, QWidget *parent, const char *name, WFlags f)
+bosonBigDisplay::bosonBigDisplay(bosonTopLevel *btl, QWidget *parent, const char *name, Qt::WindowFlags f)
 	:visualBigDisplay(btl,parent,name,f)
 {
 }
@@ -35,13 +36,13 @@ bosonBigDisplay::bosonBigDisplay(bosonTopLevel *btl, QWidget *parent, const char
 
 void bosonBigDisplay::actionClicked(int mx, int my, int /*state*/)
 {
-	QCanvasItem *sfg;
+	Q3CanvasItem *sfg;
 
 	/* is there any mobiles of my own selected ? */
 	if (vtl->mobSelected.isEmpty()) return;	// nothing to do
 	if ((int)who_am_i != vtl->selectionWho) return;	// nothing to do
 
-	QIntDictIterator<visualMobUnit> mobIt(vtl->mobSelected);
+	Q3DictIterator<visualMobUnit> mobIt(vtl->mobSelected);
 
 
 	sfg = bocanvas->findUnitAt( mx, my);

@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          boshot.h  -  description                              
                              -------------------                                         
@@ -21,9 +22,10 @@
 #ifndef BOSHOT_H 
 #define BOSHOT_H 
 
-#include <qobject.h>		// timer
-#include <qbitarray.h>
-#include <qcanvas.h>		// graphism
+#include <QObject>		// timer
+#include <QBitArray>
+#include <QBitmap>
+#include <Q3Canvas>		// graphism
 #include "sprites.h"		// rtti S_SHOT
 
 #define SHOT_FRAMES		5
@@ -36,7 +38,7 @@
 
 
 
-class boShot : public QObject,  public QCanvasSprite
+class boShot : public QObject,  public Q3CanvasSprite
 {
 	Q_OBJECT
 public:
@@ -51,10 +53,10 @@ protected:
 
 private:
 	static	QBitArray		qba_units;			// which unit explosions are already loaded
-	static	QCanvasPixmapArray	*unitSequ[UNITS_SHOTS_NB];	// explosions sequences for units
+	static	Q3CanvasPixmapArray	*unitSequ[UNITS_SHOTS_NB];	// explosions sequences for units
 	static	QBitArray		qba_fix;			// which facilities explosions are already loaded
-	static	QCanvasPixmapArray	*fixSequ[FIX_SHOTS_NB];		// explosions sequences for facilities
-	static	QCanvasPixmapArray	*shotSequ;			// explosions sequence for small shots
+	static	Q3CanvasPixmapArray	*fixSequ[FIX_SHOTS_NB];		// explosions sequences for facilities
+	static	Q3CanvasPixmapArray	*shotSequ;			// explosions sequence for small shots
 
 	static	bool loadBig(shot_style style, int version);		// load one unit/facilitye pixmaps set
 	static	bool loadSmall();

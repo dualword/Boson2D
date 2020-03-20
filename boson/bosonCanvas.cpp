@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                           bosonCanvas.cpp  -  description                              
                              -------------------                                         
@@ -103,7 +104,7 @@ void bosonCanvas::hideMob(destroyedMsg_t &m)
 {
 	playerMobUnit *u;
 
-	u = mobile.find(m.key);
+	//u = mobile.find(m.key);
 	if (u) u->doHide();
 	else logf(LOG_ERROR, "bosonCanvas::unHideMob : can't find m.key");
 
@@ -116,7 +117,7 @@ void bosonCanvas::unHideMob(mobileMsg_t &m)
 	playerMobUnit *u;
 
 	assert( m.who < nb_player);
-	u = mobile.find(m.key);
+	//u = mobile.find(m.key);
 	if (u) u->doShow();
 	else logf(LOG_ERROR, "bosonCanvas::unHideMob : can't find m.key");
 
@@ -141,7 +142,7 @@ void bosonCanvas::createMob(mobileMsg_t &m)
 			break;
 	};
 
-	mobile.insert(m.key, u);
+	//mobile.insert(m.key, u);
 
 	emit updateMobile(u);
 
@@ -154,7 +155,7 @@ void bosonCanvas::destroyMob(destroyedMsg_t &m)
 {
 	playerMobUnit *mob ;
 	
-	mob = mobile.find(m.key);
+	//mob = mobile.find(m.key);
 	if (!mob) {
 		logf(LOG_ERROR, "bosonCanvas::destroyMob : can't find m.key");
 		return;
@@ -170,7 +171,7 @@ void bosonCanvas::destroyMob(destroyedMsg_t &m)
 		emit mobileNbUpdated(--my_mobiles);
 
 	mob->destroy();
-	boAssert( mobile.remove(m.key) == true );
+	//boAssert( mobile.remove(m.key) == true );
 
 }
 
@@ -179,7 +180,7 @@ void bosonCanvas::hideFix(destroyedMsg_t &m)
 {
 	playerFacility *f;
 
-	f = facility.find(m.key);
+	//f = facility.find(m.key);
 	if (f) f->doHide();
 	else logf(LOG_ERROR, "bosonCanvas::unHideFix : can't find m.key");
 
@@ -191,7 +192,7 @@ void bosonCanvas::unHideFix(facilityMsg_t &m)
 	playerFacility *f;
 
 	assert( m.who < nb_player);
-	f = facility.find(m.key);
+	//f = facility.find(m.key);
 	if (f) f->doShow();
 	else logf(LOG_ERROR, "bosonCanvas::unHideFix : can't find m.key");
 
@@ -206,7 +207,7 @@ void bosonCanvas::createFix(facilityMsg_t &m)
 	assert(m.who < (uint) nb_player);
 
 	f = new playerFacility(&m);
-	facility.insert(m.key, f);
+	//facility.insert(m.key, f);
 
 	emit updateFix(f);
 
@@ -219,7 +220,7 @@ void bosonCanvas::destroyFix(destroyedMsg_t &msg)
 {
 	playerFacility * f;
 	
-	f = facility.find(msg.key);
+	//f = facility.find(msg.key);
 	if (!f) {
 		logf(LOG_ERROR, "bosonCanvas::destroyFix : can't find msg.key");
 		return;
@@ -235,7 +236,7 @@ void bosonCanvas::destroyFix(destroyedMsg_t &msg)
 		emit facilityNbUpdated(--my_fix);
 
 	f->destroy();
-	boAssert( facility.remove(msg.key) == true);
+	//boAssert( facility.remove(msg.key) == true);
 }
 
 
@@ -243,7 +244,7 @@ void bosonCanvas::move(moveMsg_t &msg)
 {
 	playerMobUnit * m;
 	
-	m = mobile.find(msg.key);
+	//m = mobile.find(msg.key);
 	if (!m) {
 		logf(LOG_ERROR, "bosonCanvas::move : can't find msg.key");
 		return;
@@ -254,8 +255,8 @@ void bosonCanvas::move(moveMsg_t &msg)
 
 void bosonCanvas::requestAction(void)
 {
-	QIntDictIterator<playerMobUnit> mobIt(mobile);
-	QIntDictIterator<playerFacility> fixIt(facility);
+	Q3DictIterator<playerMobUnit> mobIt(mobile);
+	Q3DictIterator<playerFacility> fixIt(facility);
 
 	for (mobIt.toFirst(); mobIt; ++mobIt)
 		mobIt.current()->getWantedAction();
@@ -268,8 +269,8 @@ void bosonCanvas::shooted(powerMsg_t &m)
 	playerMobUnit	* mob;
 	playerFacility	* fix;
 
-	mob = mobile.find(m.key);
-	fix = facility.find(m.key);
+//	mob = mobile.find(m.key);
+//	fix = facility.find(m.key);
 
 	if (mob) {
 		/* shooting a mobile */
@@ -284,7 +285,7 @@ void bosonCanvas::shooted(powerMsg_t &m)
 
 void bosonCanvas::updateRess(unitRessMsg_t &m)
 {
-	playerMobUnit	* mob = mobile.find(m.key);
+	playerMobUnit	* mob = 0;  //mobile.find(m.key);
 	
 	if (mob) {
 		mob->updateContain(m.contain);
@@ -299,8 +300,8 @@ void bosonCanvas::shoot(shootMsg_t &m)
 	QRect		r;
 	double		_z;
 
-	mob = mobile.find(m.target_key);
-	fix = facility.find(m.target_key);
+//	mob = mobile.find(m.target_key);
+//	fix = facility.find(m.target_key);
 	if (!mob && !fix) {
 		logf(LOG_ERROR, "bosonCanvas::shoot : unexpected target_key in shootMsg_t : %d", m.target_key);
 		return;

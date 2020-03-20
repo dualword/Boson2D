@@ -1,3 +1,4 @@
+/* Boson2D (2020) http://github.com/dualword/Boson2D License:GNU GPL */
 /***************************************************************************
                          game.cpp  -  description                              
                              -------------------                                         
@@ -39,7 +40,7 @@ bosonCanvas		*bocanvas	= 0l;
 /* synchronization */
 uint			jiffies		= 0u;
 /* deal with the communication layer */
-KSocket			*Socket		= 0l;
+//KSocket			*Socket		= 0l;
 playerSocketState	socketState	= PSS_INIT;
 playerState		State		= PS_INIT;
 boBuffer		*buffer		= 0l;
