@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
 
 
 	/* find dataPath */
-	QString path = "data/map/basic.bpf"; //KGlobal::instance()->dirs()->findResourceDir("data", "boson/map/basic.bpf") + "boson/";
+	QString path = "data/"; //KGlobal::instance()->dirs()->findResourceDir("data", "boson/map/basic.bpf") + "boson/";
 	dataPath = &path;	 // local variable to main are 'almost' global
 
 	/* XXX orzel : temp, until GUI is really functionnal */

@@ -52,7 +52,7 @@ speciesTheme::speciesTheme(char *themeName, QRgb color)
 	boAssert ( mobiles->fill(false) );
 	boAssert ( facilities->fill(false) );
 
-	themePath	= "data/themes/species/"; //*dataPath +
+	themePath	= *dataPath + "themes/species/";
 	themePath	+= themeName;
 	themePath	+= "/";
 
@@ -96,8 +96,8 @@ speciesTheme::~speciesTheme()
 bool speciesTheme::loadMob(int index)
 {
 int j;
-QList<QPixmap*>	pix_l;
-QList<QPoint*>	point_l;
+QList<QPixmap>	pix_l;
+QList<QPoint>	point_l;
 QPixmap		*p;
 QPoint		*pp;
 char		buffer[100];
@@ -110,13 +110,13 @@ for(j=0; j<PIXMAP_PER_MOBILE; j++) {
 		logf(LOG_ERROR, "SpeciesTheme : Can't load(mob) %s/field.%02d.bmp ...\n", (const char *)path, j);
 		return false;
 		}
-	pix_l.append(p);
+	pix_l.append(*p);
 	pp = new QPoint(0,0);
-	//pp = new QPoint(p->width()/2, p->height()/2 );
-	point_l.append(pp);
+	pp = new QPoint(p->width()/2, p->height()/2 );
+	point_l.append(*pp);
 }
 
-//mobSprite[index] = new Q3CanvasPixmapArray(pix_l, point_l);
+mobSprite[index] = new Q3CanvasPixmapArray(pix_l); //, point_l
 
 /* big overview */
 if (!loadPixmap(path + "/overview.big.bmp", &mobBigOverview[index], false)) {
@@ -219,8 +219,8 @@ bool speciesTheme::loadPixmap(const QString &path, QPixmap **pix, bool withMask,
 bool speciesTheme::loadFix(int i)
 {
 int j;
-QList<QPixmap*>	pix_l;
-QList<QPoint*>	point_l;
+QList<QPixmap>	pix_l;
+QList<QPoint>	point_l;
 QPixmap		*p;
 QPoint		*pp;
 char		buffer[100];
@@ -233,12 +233,12 @@ for(j=0; j< PIXMAP_PER_FIX ; j++) {
 		logf(LOG_ERROR, "SpeciesTheme : Can't load(fix) %s/field.%03d.bmp ...\n", (const char *)path, j);
 		return false;
 	}
-	pix_l.append(p);
+	pix_l.append(*p);
 	pp = new QPoint( 0, 0);
-	point_l.append(pp);
-	}
+	point_l.append(*pp);
+}
 
-//fixSprite[i] = new Q3CanvasPixmapArray(pix_l, point_l);
+fixSprite[i] = new Q3CanvasPixmapArray(pix_l); //, point_l
 
 /* big overview */
 if (!loadPixmap(path + "/overview.big.bmp", &fixBigOverview[i], false)) {

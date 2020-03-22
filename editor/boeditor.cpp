@@ -37,6 +37,8 @@
 #include "newDlg.h"
 #include "visual.h"
 
+#include <QtGui>
+
 /*
  * visual/visual.h
  */
@@ -105,7 +107,7 @@ void BoEditorApp::slot_newWindow()
 	editorTopLevel *btl = new editorTopLevel(this);
 	btl->show();
 	if (!filename.isNull()) btl->setCaption(filename);
-	//topLevels.append(btl);
+	topLevels.append(btl);
 }
 
 void BoEditorApp::slot_openNew()
@@ -147,10 +149,12 @@ void BoEditorApp::slot_open()
 {
 	if (!filename.isNull() && !slot_close()) return;
 
+	QString f = QFileDialog::getOpenFileName( 0, "Open file", ".", "All Files (*.*)");
+	if(f.isEmpty()) return;
 //	QString name = KFileDialog::getOpenFileName( "", "*.bpf" , 0 );
-//	if ( name.isEmpty() ) return;
+	if ( f.isEmpty() ) return;
 
-	//do_open(name);
+	do_open(f);
 }
 
 void BoEditorApp::do_open(QString name)
@@ -171,9 +175,9 @@ void BoEditorApp::do_open(QString name)
 		return;
 	}
 
-	// set captions on TopLevel windows
-//	for ( editorTopLevel *btl=topLevels.first(); btl != 0; btl=topLevels.next() )
-//		btl->setCaption(name);
+	//set captions on TopLevel windows
+	for ( auto btl : topLevels )
+		btl->setCaption(name);
 }
 
 bool BoEditorApp::slot_close()

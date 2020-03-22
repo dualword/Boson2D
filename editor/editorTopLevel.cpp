@@ -288,10 +288,6 @@ void editorTopLevel::handleButton(int but)
 
 	boAssert(but>=0);
 	switch(which) {
-		default:
-			logf(LOG_ERROR, "editorTopLevel::handleButton, unexpected which..");
-			break;
-
 		case W_FACILITIES:
 			boAssert(but<facilityPropNb);
 			otype = OT_FACILITY;
@@ -310,7 +306,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<4);
 			g = GET_BIG_TRANS_NUMBER (trans,  (inverted?4:0) + but );
 			otype = OT_GROUND;
-			//setSelected ( & QPixmap( * bigTiles[but]->pixmap()) );
+			setSelected (& QPixmap(bigTiles[but]->icon().pixmap(96))); //*bigTiles[but]->pixmap()
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -318,7 +314,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<4);
 			g = GET_BIG_TRANS_NUMBER (trans,  (inverted?12:8) + but );
 			otype = OT_GROUND;
-			///setSelected ( & QPixmap( * bigTiles[but]->pixmap()) );
+			setSelected ( & QPixmap( bigTiles[but]->icon().pixmap(96)) );
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -329,7 +325,7 @@ void editorTopLevel::handleButton(int but)
 				g = inverted?groundTransProp[trans].to:groundTransProp[trans].from;
 			else	g = GET_TRANS_NUMBER(trans, m_map[ (inverted?9:0) + but ]);
 			otype = OT_GROUND;
-			//setSelected( & QPixmap ( * tiles[but]->pixmap()) );
+			setSelected( & QPixmap ( tiles[but]->icon().pixmap(96)) );
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -337,11 +333,16 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<GROUND_LAST-1);
 			g = (groundType) (but+1); // +1 cause GROUND_UNKNOWN
 			otype = OT_GROUND;
-			//setSelected( & QPixmap ( * tiles[but]->pixmap()) );
+			setSelected( & QPixmap ( tiles[but]->icon().pixmap(96)) );
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
+		default:
+			logf(LOG_ERROR, "editorTopLevel::handleButton, unexpected which..");
+			break;
+
 	} // switch(which)
+
 }
 
 void editorTopLevel::makeCommandGui(void)

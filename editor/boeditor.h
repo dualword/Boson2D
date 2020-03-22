@@ -88,7 +88,7 @@ private:
 	//KActionCollection m_actions;
 	QString		filename;
 
-	QList<editorTopLevel>	topLevels;
+	QList<editorTopLevel*>	topLevels;
 };
 
 #endif // BOEDITOR_H

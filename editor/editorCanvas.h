@@ -22,7 +22,7 @@
 #ifndef EDITORCANVAS_H 
 #define EDITORCANVAS_H 
 
-#include <Q3Dict>
+#include <Q3IntDict>
 
 #include "common/boFile.h"
 
@@ -64,8 +64,8 @@ public:
 
 public:
 //private:
-	Q3Dict<visualMobUnit>		mobiles;
-	Q3Dict<visualFacility>	facilities;
+	Q3IntDict<visualMobUnit> mobiles;
+	Q3IntDict<visualFacility> facilities;
 
 private:
 	long		key;

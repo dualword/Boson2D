@@ -7,7 +7,7 @@ INCLUDEPATH += . .. visual ../visual common map
 CONFIG += qt thread release
 QT += svg qt3support
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra -fpermissive
 
 include (../common/common.pri)
 include (../map/map.pri)

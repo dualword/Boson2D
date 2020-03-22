@@ -25,6 +25,8 @@
 
 #include "editorCanvas.h"
 
+#include <QtGui>
+
 editorCanvas::editorCanvas(QPixmap p)
 	: visualCanvas(p, 2, 2) // fake values, will be changed by either Load() or New()
 {
@@ -47,40 +49,40 @@ bool editorCanvas::Load(QString filename)
 
 	freeRessources();
 
-	//if (!openRead(filename.data())) return false;
+	if (!openRead(filename.toStdString().c_str())) return false;
 
-//	/* QCanvas configuratoin */
-//	resize(map_width, map_height);
-//	emit syncMini();	// let the miniMap synchronized with the new parameters
-//
-//	/* initialisation */
-//	for (i=0; i< map_width; i++)
-//		for (j=0; j< map_height; j++) {
-//			boFile::load( c);
-//			setCell( i, j, c); // XXX can't this loading be done in visual now ?
-//		}
-//
-//	/* checking */
-//	for (int i=0; i< 3; i++)
-//		for (int j=0; j< 3; j++)
-//			boAssert ( ground (tile(i,j)) );
-//
-//
-//	for (i=0; i<nbMobiles; i++) {
-//		boFile::load(mob);
-//		if (!isOk()) return false;
-//		createMobUnit(mob);
-//	}
-//
-//	for (i=0; i<nbFacilities; i++) {
-//		boFile::load(fix);
-//		if (!isOk()) return false;
-//		createFixUnit(fix);
-//	}
-//
-//	// ok, it's all right
-//	Close();
-//	modified = false;
+	/* QCanvas configuratoin */
+	resize(map_width, map_height);
+	emit syncMini();	// let the miniMap synchronized with the new parameters
+
+	/* initialisation */
+	for (i=0; i< map_width; i++)
+		for (j=0; j< map_height; j++) {
+			boFile::load( c);
+			setCell( i, j, c); // XXX can't this loading be done in visual now ?
+		}
+
+	/* checking */
+	for (int i=0; i< 3; i++)
+		for (int j=0; j< 3; j++)
+			boAssert ( ground (tile(i,j)) );
+
+
+	for (i=0; i<nbMobiles; i++) {
+		boFile::load(mob);
+		if (!isOk()) return false;
+		createMobUnit(mob);
+	}
+
+	for (i=0; i<nbFacilities; i++) {
+		boFile::load(fix);
+		if (!isOk()) return false;
+		createFixUnit(fix);
+	}
+
+	// ok, it's all right
+	Close();
+	modified = false;
 	update();
 	return isOk();
 }
@@ -160,15 +162,13 @@ void editorCanvas::freeRessources()
 
 void editorCanvas::createMobUnit(mobileMsg_t &msg)
 {
-	visualMobUnit *m;
-
 	msg.key = key++;
+	visualMobUnit* m = new visualMobUnit(&msg);;
 
-	m = new visualMobUnit(&msg);
-	//mobiles.insert(msg.key, m);
+	mobiles.insert(msg.key, m);
 
 	modified = true;
-//	emit updateMobile(m);
+	emit updateMobile(m);
 }
 
 
@@ -180,12 +180,11 @@ void editorCanvas::createFixUnit(facilityMsg_t &msg)
 	msg.state = CONSTRUCTION_STEPS - 1 ;
 
 	f = new visualFacility(&msg);
-	//facilities.insert(msg.key, f);
+	facilities.insert(msg.key, f);
 
 	modified = true;
-//	emit updateFix(f);
+	emit updateFix(f);
 }
-
 
 void editorCanvas::changeCell(int x, int y, cell_t c)
 {
