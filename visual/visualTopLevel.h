@@ -25,8 +25,8 @@
 //#include <ktmainwindow.h>
 
 #include <QMainWindow>
-#include <Q3Dict>
-#include <Q3DictIterator>
+#include <Q3IntDict>
+#include <Q3IntDictIterator>
 
 #include <visualUnit.h>
 
@@ -110,7 +110,7 @@ public:
 
 public: ///orzel : bof...
 	visualFacility		*fixSelected;
-	 Q3Dict<visualMobUnit>	mobSelected;
+	Q3IntDict<visualMobUnit>	mobSelected;
 	int			selectionWho; // -1 is nobody
 protected:
 	selectionMode_t		selectionMode;

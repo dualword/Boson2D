@@ -41,6 +41,7 @@ class	Q3WidgetStack;
 class	Q3ScrollView;
 class	QVBoxLayout;
 class	QComboBox;
+class   QToolBar;
 
 class	mainWidget;
 class	BoEditorApp;
@@ -145,7 +146,7 @@ private:
 	QComboBox	*qcb_transRef, *qcb_which, *qcb_who;
 	QPushButton	*tiles[TILES_NB];
 	QPushButton	*bigTiles[BIG_TILES_NB];
-
+	QToolBar* bar;
 
 
 };

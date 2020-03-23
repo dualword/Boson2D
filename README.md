@@ -1,6 +1,6 @@
 # Boson2D
 
-Boson2D - Qt port of real-time strategy (RTS) game Boson.
+Boson2D - Qt port of 2D real-time strategy (RTS) game Boson.
 
 License: GNU General Public License (Version 3)  
 Source code: http://github.com/dualword/Boson2D/ 

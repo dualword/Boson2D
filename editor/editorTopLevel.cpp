@@ -29,6 +29,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QToolBar>
 
 //#include <klocale.h>
 //#include <kstdaction.h>
@@ -70,12 +71,18 @@ static void fillGroundPixmap( QPixmap *p, int g)
 }
 #undef BITBLT
 
-
-#define ADD_ACTION(name) KStdAction::##name(this, SLOT(slot_##name()), actionCollection() );
 editorTopLevel::editorTopLevel( BoEditorApp *app,  const char *name, Qt::WindowFlags f)
-	: visualTopLevel(name,f)
-	, mw(this)
+	: visualTopLevel(name,f), mw(this)
 {
+	bar = new QToolBar(this);
+	bar->setFloatable(false);
+	bar->setMovable(false);
+	bar->addAction(style()->standardIcon(QStyle::SP_FileDialogStart),"Open",app,SLOT(slot_open()));
+	bar->addAction(style()->standardIcon(QStyle::SP_DialogOpenButton),"Open New",app,SLOT(slot_openNew()));
+	bar->addAction(style()->standardIcon(QStyle::SP_DialogCloseButton),"Close",app,SLOT(slot_close()));
+	bar->addAction(style()->standardIcon(QStyle::SP_DialogApplyButton),"Save",app,SLOT(slot_save()));
+	bar->addAction(style()->standardIcon(QStyle::SP_DialogSaveButton),"Save As",app,SLOT(slot_saveAs()));
+	addToolBar(bar);
 
 	/* toplevelwindow-specific actions */
 //	(void) new KAction(
@@ -306,7 +313,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<4);
 			g = GET_BIG_TRANS_NUMBER (trans,  (inverted?4:0) + but );
 			otype = OT_GROUND;
-			setSelected (& QPixmap(bigTiles[but]->icon().pixmap(96))); //*bigTiles[but]->pixmap()
+			setSelected (& QPixmap(bigTiles[but]->icon().pixmap(96)));
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -314,7 +321,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<4);
 			g = GET_BIG_TRANS_NUMBER (trans,  (inverted?12:8) + but );
 			otype = OT_GROUND;
-			setSelected ( & QPixmap( bigTiles[but]->icon().pixmap(96)) );
+			setSelected ( & QPixmap( bigTiles[but]->icon().pixmap(96)));
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -325,7 +332,7 @@ void editorTopLevel::handleButton(int but)
 				g = inverted?groundTransProp[trans].to:groundTransProp[trans].from;
 			else	g = GET_TRANS_NUMBER(trans, m_map[ (inverted?9:0) + but ]);
 			otype = OT_GROUND;
-			setSelected( & QPixmap ( tiles[but]->icon().pixmap(96)) );
+			setSelected( & QPixmap ( tiles[but]->icon().pixmap(96)));
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -333,7 +340,7 @@ void editorTopLevel::handleButton(int but)
 			boAssert(but<GROUND_LAST-1);
 			g = (groundType) (but+1); // +1 cause GROUND_UNKNOWN
 			otype = OT_GROUND;
-			setSelected( & QPixmap ( tiles[but]->icon().pixmap(96)) );
+			setSelected( & QPixmap ( tiles[but]->icon().pixmap(96)));
 			emit setSelectedObject (otype, g);		// need to be after the setSelected
 			break;
 
@@ -461,20 +468,20 @@ void editorTopLevel::slot_editDestroy(void)
 	int mkey;
 	editorCanvas  *_canvas = (editorCanvas*)vcanvas;
 
-//	if (fixSelected) {
-//		/* destroy fix */
-//		mkey = fixSelected->key;
-//		unSelectFix();
-//		_//canvas->facilities.remove(mkey);
-//	} else {
-//		/* destroy mobiles */
-//		Q3DictIterator<visualMobUnit> selIt(mobSelected);
-//		for (selIt.toFirst(); selIt;) {			// ++ not needed, selIt should be increased
-//			mkey = selIt.currentKey(); 		// by the .remove() in unselect
-//			unSelectMob(mkey);
-//			_//canvas->mobiles.remove(mkey);
-//		}
-//	}
+	if (fixSelected) {
+		/* destroy fix */
+		mkey = fixSelected->key;
+		unSelectFix();
+		_canvas->facilities.remove(mkey);
+	} else {
+		/* destroy mobiles */
+		Q3DictIterator<visualMobUnit> selIt(mobSelected);
+		for( ; selIt.current(); ++selIt ) {
+			mkey = selIt.current(); 		// by the .remove() in unselect
+			unSelectMob(mkey);
+			_canvas->mobiles.remove(mkey);
+		}
+	}
 	_canvas->update();
 }
 

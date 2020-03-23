@@ -103,12 +103,12 @@ Q3CanvasPixmapArray *initStatic(selectPart::sp_type type)
 {
 	int i;
 	QList<QPixmap>	pixmaps;
-	QPixmap		*pix, *_pix;
+	QPixmap		pix, _pix;
 	QList<QPoint>	points;
-	QPoint		*point;
+	QPoint		point;
 	QPainter	painter;
 	
-	_pix = new QPixmap(SP_W, SP_H);
+	_pix = QPixmap(SP_W, SP_H);
 	
 	/* draw the mask */
 	QBitmap _mask (SP_W, SP_H);
@@ -130,9 +130,9 @@ Q3CanvasPixmapArray *initStatic(selectPart::sp_type type)
 	for(i=0; i<PART_NB; i++) {
 		
 		/* draw it */
-		_pix->fill();
+		_pix.fill();
 	
-		painter.begin(_pix);
+		//painter.begin(_pix);
 		if (selectPart::PART_DOWN == type) {
 			painter.rotate(180);
 			painter.translate(-SP_W+1, -SP_H+1);
@@ -141,23 +141,22 @@ Q3CanvasPixmapArray *initStatic(selectPart::sp_type type)
 		painter.end();
 
 		/* merge results */
-		_pix->setMask(_mask);
+		_pix.setMask(_mask);
 
 		/* create entries in QList */
-		pix = new QPixmap(*_pix);
-//		pixmaps.append (pix);
-//
-//		if (selectPart::PART_DOWN == type)
-//			point = new QPoint(1, SP_H-2 - SP_CORNER_POS);
-//		else
-//			point = new QPoint(SP_W-2, SP_CORNER_POS);
-//		points.append (point);
+		pix = QPixmap(_pix);
+		pixmaps.append (pix);
+
+		if (selectPart::PART_DOWN == type)
+			point = QPoint(1, SP_H-2 - SP_CORNER_POS);
+		else
+			point = QPoint(SP_W-2, SP_CORNER_POS);
+		points.append (point);
 		}
 
-	delete _pix;
+	//delete _pix;
 
-	//return new Q3CanvasPixmapArray(pixmaps,points);
-	return 0;
+	return new Q3CanvasPixmapArray(pixmaps); //,points
 
 }
 
