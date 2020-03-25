@@ -1,0 +1,137 @@
+dnl    This file is part of the KDE libraries/packages
+dnl    Copyright (C) 2001 Stephan Kulow (coolo@kde.org)
+ 
+dnl    This file is free software; you can redistribute it and/or
+dnl    modify it under the terms of the GNU Library General Public
+dnl    License as published by the Free Software Foundation; either
+dnl    version 2 of the License, or (at your option) any later version.
+ 
+dnl    This library is distributed in the hope that it will be useful,
+dnl    but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+dnl    Library General Public License for more details.
+ 
+dnl    You should have received a copy of the GNU Library General Public License
+dnl    along with this library; see the file COPYING.LIB.  If not, write to
+dnl    the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+dnl    Boston, MA 02111-1307, USA.
+
+# Original Author was Kalle@kde.org
+# I lifted it in some mater. (Stephan Kulow)
+# I used much code from Janos Farkas
+
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(acinclude.m4) dnl a source file from your sub dir
+
+dnl This is so we can use kde-common
+AC_CONFIG_AUX_DIR(admin)
+
+dnl This ksh/zsh feature conflicts with `cd blah ; pwd`
+unset CDPATH
+
+dnl Checking host/target/build systems, for make, install etc.
+AC_CANONICAL_SYSTEM 
+dnl Perform program name transformation
+AC_ARG_PROGRAM
+
+dnl Automake doc recommends to do this only here. (Janos)
+AM_INIT_AUTOMAKE(boson, 0.6.1) dnl searches for some needed programs
+
+KDE_SET_PREFIX
+
+dnl generate the config header
+AM_CONFIG_HEADER(config.h) dnl at the distribution this done
+
+dnl Checks for programs.
+AC_CHECK_COMPILERS
+AC_ENABLE_SHARED(yes)
+AC_ENABLE_STATIC(no)
+KDE_PROG_LIBTOOL
+
+dnl for NLS support. Call them in this order!
+dnl WITH_NLS is for the po files
+AM_KDE_WITH_NLS
+
+dnl KDE_USE_QT
+AC_PATH_KDE
+#MIN_CONFIG
+
+dnl PACKAGE set before
+
+dnl These are common macros that you might or might not want to use
+
+dnl Image readers/writers
+KDE_CHECK_KIMGIO
+ 
+dnl Checks for header files.
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_HEADER_TIME
+AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h stdlib.h paths.h)
+AC_CHECK_FUNCS(usleep)
+dnl Check for an existing KGame installation. If existent kgame/kgame.h should
+dnl be present
+AC_DEFUN(AC_CHECK_KGAME,
+[
+AC_MSG_CHECKING([for kgame/kgame.h])
+AC_FIND_FILE(kgame/kgame.h, $kde_includes, kgame)
+if test "$kgame" = NO ; then
+  AC_MSG_RESULT([no])
+  AC_MSG_ERROR([kgame/kgame.h was not found. Please install kdegames/libkdegames first])
+else
+  AC_MSG_RESULT([$kgame])
+fi
+])
+AC_CHECK_KGAME
+
+dnl Temporary check: KDE Beta 1 doesn't have KShortcut
+dnl AC_DEFUN(AC_CHECK_KSHORTCUT,
+dnl [
+dnl AC_FIND_FILE(kshortcut.h, $kde_includes, kshortcut)
+dnl if test "$kshortcut" = NO || test -z "$kshortcut" ; then
+dnl   AC_DEFINE_UNQUOTED(HAVE_KSHORTCUT, 0, [ ])
+dnl else 
+dnl   AC_DEFINE_UNQUOTED(HAVE_KSHORTCUT, 1, [ ])
+dnl fi
+dnl ])
+dnl AC_CHECK_KSHORTCUT
+
+
+dnl Temporary check: KDE Beta 1 doesn't have KGameProgress but KProgress
+dnl AC_DEFUN(AC_CHECK_KGAMEPROGRESS,
+dnl [
+dnl AC_FIND_FILE(kgameprogress.h, $kde_includes, kgameprogress)
+dnl if test "$kgameprogress" = NO ; then
+dnl   AC_DEFINE_UNQUOTED(HAVE_KGAMEPROGRSS, 0, [ ])
+dnl else 
+dnl   AC_DEFINE_UNQUOTED(HAVE_KGAMEPROGRESS, 1, [ ])
+dnl fi
+dnl ])
+dnl AC_CHECK_KGAMEPROGRESS
+
+KDE_CHECK_STL
+
+KDE_CREATE_SUBDIRSLIST
+AC_OUTPUT( \
+./Makefile \
+boson/Makefile \
+boson/data/Makefile \
+data/Makefile \
+data/doc/Makefile \
+data/doc/en/Makefile \
+data/map/Makefile \
+data/music/Makefile \
+data/pics/Makefile \
+data/themes/Makefile \
+data/themes/cursors/Makefile \
+data/themes/grounds/Makefile \
+data/themes/species/Makefile \
+data/themes/species/human/Makefile \
+data/themes/species/human/explosions/Makefile \
+data/themes/species/human/sounds/Makefile \
+data/themes/species/human/units/Makefile \
+data/themes/ui/Makefile \
+data/themes/ui/standard/Makefile \
+po/Makefile \
+)

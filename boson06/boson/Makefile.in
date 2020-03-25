@@ -1,0 +1,1031 @@
+# KDE tags expanded automatically by am_edit - $Revision: 1.2 $ 
+# Makefile.in generated automatically by automake 1.5 from Makefile.am.
+
+# Copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+# Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+@SET_MAKE@
+
+# this has all of the subdirectories that make will recurse into.  if
+# there are none, comment this out
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+top_builddir = ..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_HEADER = $(INSTALL_DATA)
+transform = @program_transform_name@
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+build_alias = @build_alias@
+build_triplet = @build@
+host_alias = @host_alias@
+host_triplet = @host@
+target_alias = @target_alias@
+target_triplet = @target@
+AMTAR = @AMTAR@
+ARTSCCONFIG = @ARTSCCONFIG@
+AS = @AS@
+AUTODIRS = @AUTODIRS@
+AWK = @AWK@
+CC = @CC@
+CONF_FILES = @CONF_FILES@
+CPP = @CPP@
+CXX = @CXX@
+CXXCPP = @CXXCPP@
+DCOPIDL = @DCOPIDL@
+DCOPIDL2CPP = @DCOPIDL2CPP@
+DCOP_DEPENDENCIES = @DCOP_DEPENDENCIES@
+DEPDIR = @DEPDIR@
+DLLTOOL = @DLLTOOL@
+DPMSINC = @DPMSINC@
+DPMSLIB = @DPMSLIB@
+ECHO = @ECHO@
+EXEEXT = @EXEEXT@
+GCJ = @GCJ@
+GCJFLAGS = @GCJFLAGS@
+GLINC = @GLINC@
+GLLIB = @GLLIB@
+GMSGFMT = @GMSGFMT@
+IDL = @IDL@
+IDL_DEPENDENCIES = @IDL_DEPENDENCIES@
+INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+JAR = @JAR@
+JAVAC = @JAVAC@
+JAVAH = @JAVAH@
+JVMLIBS = @JVMLIBS@
+KDECONFIG = @KDECONFIG@
+KDE_CXXFLAGS = @KDE_CXXFLAGS@
+KDE_EXTRA_RPATH = @KDE_EXTRA_RPATH@
+KDE_INCLUDES = @KDE_INCLUDES@
+KDE_LDFLAGS = @KDE_LDFLAGS@
+KDE_MT_LDFLAGS = @KDE_MT_LDFLAGS@
+KDE_MT_LIBS = @KDE_MT_LIBS@
+KDE_PLUGIN = @KDE_PLUGIN@
+KDE_RPATH = @KDE_RPATH@
+KDE_USE_CLOSURE_FALSE = @KDE_USE_CLOSURE_FALSE@
+KDE_USE_CLOSURE_TRUE = @KDE_USE_CLOSURE_TRUE@
+KDE_USE_FINAL_FALSE = @KDE_USE_FINAL_FALSE@
+KDE_USE_FINAL_TRUE = @KDE_USE_FINAL_TRUE@
+KDE_XSL_STYLESHEET = @KDE_XSL_STYLESHEET@
+LEX = @LEX@
+LEXLIB = @LEXLIB@
+LIBCOMPAT = @LIBCOMPAT@
+LIBCRYPT = @LIBCRYPT@
+LIBDL = @LIBDL@
+LIBGEN = @LIBGEN@
+LIBJPEG = @LIBJPEG@
+LIBMICO = @LIBMICO@
+LIBOBJS = @LIBOBJS@
+LIBPNG = @LIBPNG@
+LIBPTHREAD = @LIBPTHREAD@
+LIBPYTHON = @LIBPYTHON@
+LIBQIMGIO = @LIBQIMGIO@
+LIBRESOLV = @LIBRESOLV@
+LIBSHADOW = @LIBSHADOW@
+LIBSM = @LIBSM@
+LIBSOCKET = @LIBSOCKET@
+LIBTIFF = @LIBTIFF@
+LIBTOOL = @LIBTOOL@
+LIBUCB = @LIBUCB@
+LIBUTIL = @LIBUTIL@
+LIBXINERAMA = @LIBXINERAMA@
+LIBZ = @LIBZ@
+LIB_KAB = @LIB_KAB@
+LIB_KDECORE = @LIB_KDECORE@
+LIB_KDEPRINT = @LIB_KDEPRINT@
+LIB_KDEUI = @LIB_KDEUI@
+LIB_KFILE = @LIB_KFILE@
+LIB_KFM = @LIB_KFM@
+LIB_KHTML = @LIB_KHTML@
+LIB_KIMGIO = @LIB_KIMGIO@
+LIB_KIO = @LIB_KIO@
+LIB_KPARTS = @LIB_KPARTS@
+LIB_KSPELL = @LIB_KSPELL@
+LIB_KSYCOCA = @LIB_KSYCOCA@
+LIB_QPE = @LIB_QPE@
+LIB_QT = @LIB_QT@
+LIB_QTOPIA = @LIB_QTOPIA@
+LIB_SMB = @LIB_SMB@
+LIB_X11 = @LIB_X11@
+LIB_XEXT = @LIB_XEXT@
+LN_S = @LN_S@
+MCOPIDL = @MCOPIDL@
+MEINPROC = @MEINPROC@
+MICO_INCLUDES = @MICO_INCLUDES@
+MICO_LDFLAGS = @MICO_LDFLAGS@
+MOC = @MOC@
+MSGFMT = @MSGFMT@
+NOOPT_CFLAGS = @NOOPT_CFLAGS@
+NOOPT_CXXFLAGS = @NOOPT_CXXFLAGS@
+NOREPO = @NOREPO@
+OBJDUMP = @OBJDUMP@
+OBJEXT = @OBJEXT@
+PACKAGE = @PACKAGE@
+PAMLIBS = @PAMLIBS@
+PASSWDLIBS = @PASSWDLIBS@
+PYTHONINC = @PYTHONINC@
+PYTHONLIB = @PYTHONLIB@
+PYTHONMODDIR = @PYTHONMODDIR@
+QTE_NORTTI = @QTE_NORTTI@
+QTOPIA_INCLUDES = @QTOPIA_INCLUDES@
+QT_INCLUDES = @QT_INCLUDES@
+QT_LDFLAGS = @QT_LDFLAGS@
+RANLIB = @RANLIB@
+RC = @RC@
+REPO = @REPO@
+SETUIDFLAGS = @SETUIDFLAGS@
+STRIP = @STRIP@
+TOPSUBDIRS = @TOPSUBDIRS@
+UIC = @UIC@
+UIC_TR = @UIC_TR@
+USER_INCLUDES = @USER_INCLUDES@
+USER_LDFLAGS = @USER_LDFLAGS@
+USE_EXCEPTIONS = @USE_EXCEPTIONS@
+USE_RTTI = @USE_RTTI@
+USE_THREADS = @USE_THREADS@
+VERSION = @VERSION@
+WOVERLOADED_VIRTUAL = @WOVERLOADED_VIRTUAL@
+XGETTEXT = @XGETTEXT@
+XPMINC = @XPMINC@
+XPMLIB = @XPMLIB@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_INCLUDES = @X_INCLUDES@
+X_LDFLAGS = @X_LDFLAGS@
+X_PRE_LIBS = @X_PRE_LIBS@
+all_includes = @all_includes@
+all_libraries = @all_libraries@
+am__include = @am__include@
+am__quote = @am__quote@
+idldir = @idldir@
+install_sh = @install_sh@
+jni_includes = @jni_includes@
+kde_appsdir = @kde_appsdir@
+kde_bindir = @kde_bindir@
+kde_confdir = @kde_confdir@
+kde_datadir = @kde_datadir@
+kde_htmldir = @kde_htmldir@
+kde_icondir = @kde_icondir@
+kde_includes = @kde_includes@
+kde_libraries = @kde_libraries@
+kde_libs_htmldir = @kde_libs_htmldir@
+kde_libs_prefix = @kde_libs_prefix@
+kde_locale = @kde_locale@
+kde_mimedir = @kde_mimedir@
+kde_moduledir = @kde_moduledir@
+kde_qtver = @kde_qtver@
+kde_servicesdir = @kde_servicesdir@
+kde_servicetypesdir = @kde_servicetypesdir@
+kde_sounddir = @kde_sounddir@
+kde_styledir = @kde_styledir@
+kde_templatesdir = @kde_templatesdir@
+kde_wallpaperdir = @kde_wallpaperdir@
+kde_widgetdir = @kde_widgetdir@
+micodir = @micodir@
+qt_includes = @qt_includes@
+qt_libraries = @qt_libraries@
+x_includes = @x_includes@
+x_libraries = @x_libraries@
+
+SUBDIRS = data 
+
+#boson editor
+bin_PROGRAMS = boson bounit 
+
+#boeditor 
+INCLUDES = -I$(kde_includes)/arts $(all_includes)
+
+# all boson(game)-only parts
+BOSON_SRC = main.cpp \
+	top.cpp  \
+	bosonwelcomewidget.cpp \
+	bosonnewgamewidget.cpp \
+	bosonserveroptionswidget.cpp \
+	bosonloadingwidget.cpp
+
+#optionsdialog.cpp # should be boson-only but... currently we need it for both.
+
+# all map editor-only parts. 
+BOEDITOR_SRC = editor.cpp \
+	bosonunitdialog.cpp \
+	editorinput.cpp \
+	topbase.cpp
+
+
+# all used-by-both files.
+# actually editorinput.cpp should be in BOEDITOR_SRC but it is used by
+# bosonwidget.cpp...
+COMMON_SRC = \
+	cell.cpp \
+	unitproperties.cpp \
+	unitbase.cpp \
+	boitemlist.cpp \
+	boselection.cpp \
+	kspritetooltip.cpp \
+	bosonmap.cpp \
+	bosonscenario.cpp \
+	bosonplayfield.cpp \
+	bosoncanvas.cpp \
+	boson.cpp \
+	speciestheme.cpp \
+	player.cpp \
+	bosoncommandframe.cpp \
+	kgamedialogbosonconfig.cpp \
+	bosonbigdisplay.cpp \
+	bosonminimap.cpp \
+	bosonunitview.cpp \
+	kgameunitdebug.cpp \
+	bodisplaymanager.cpp \
+	bosonwidget.cpp \
+	boshot.cpp \
+	bosontiles.cpp \
+	bosonconfig.cpp \
+	optionsdialog.cpp \
+	bosoncomputerio.cpp \
+	kgamedialogcomputerconfig.cpp \
+	bosonpath.cpp \
+	unit.cpp \
+	bosoncommandwidget.cpp \
+	bosonmusic.cpp \
+	selectbox.cpp \
+	commandinput.cpp \
+	kgamecanvaschat.cpp \
+	bosoncursor.cpp \
+	bosonsound.cpp \
+	unitgroup.cpp \
+	bosonstatistics.cpp \
+	gameoverdialog.cpp \
+	unitplugins.cpp \
+	bosonstarteditorwidget.cpp
+
+
+BOUNIT_SRC = \
+	unitproperties.cpp \
+	bosonunitdialog.cpp \
+	bounitmain.cpp
+
+
+boson_LDFLAGS = $(KDE_RPATH) $(all_libraries)
+boson_LDADD = -lkdegames -lqtmcop -lsoundserver_idl -lartskde $(LIB_KDEUI)
+boson_SOURCES = $(BOSON_SRC) $(COMMON_SRC)
+
+
+#boeditor_LDFLAGS = $(KDE_RPATH) $(all_libraries)
+#boeditor_LDADD = -lkdegames -lqtmcop -lsoundserver_idl -lartskde $(LIB_KDEUI) 
+#boeditor_SOURCES = $(BOEDITOR_SRC) $(COMMON_SRC)
+bounit_LDFLAGS = $(KDE_RPATH) $(all_libraries)
+bounit_LDADD = -lkio $(LIB_KDEUI) 
+bounit_SOURCES = $(BOUNIT_SRC) 
+
+#>- METASOURCES = AUTO
+subdir = boson
+mkinstalldirs = $(SHELL) $(top_srcdir)/admin/mkinstalldirs
+CONFIG_HEADER = $(top_builddir)/config.h
+CONFIG_CLEAN_FILES =
+bin_PROGRAMS = boson$(EXEEXT) bounit$(EXEEXT)
+PROGRAMS = $(bin_PROGRAMS)
+
+am_boson_OBJECTS = main.$(OBJEXT) top.$(OBJEXT) \
+	bosonwelcomewidget.$(OBJEXT) bosonnewgamewidget.$(OBJEXT) \
+	bosonserveroptionswidget.$(OBJEXT) bosonloadingwidget.$(OBJEXT) \
+	cell.$(OBJEXT) unitproperties.$(OBJEXT) unitbase.$(OBJEXT) \
+	boitemlist.$(OBJEXT) boselection.$(OBJEXT) \
+	kspritetooltip.$(OBJEXT) bosonmap.$(OBJEXT) \
+	bosonscenario.$(OBJEXT) bosonplayfield.$(OBJEXT) \
+	bosoncanvas.$(OBJEXT) boson.$(OBJEXT) speciestheme.$(OBJEXT) \
+	player.$(OBJEXT) bosoncommandframe.$(OBJEXT) \
+	kgamedialogbosonconfig.$(OBJEXT) bosonbigdisplay.$(OBJEXT) \
+	bosonminimap.$(OBJEXT) bosonunitview.$(OBJEXT) \
+	kgameunitdebug.$(OBJEXT) bodisplaymanager.$(OBJEXT) \
+	bosonwidget.$(OBJEXT) boshot.$(OBJEXT) bosontiles.$(OBJEXT) \
+	bosonconfig.$(OBJEXT) optionsdialog.$(OBJEXT) \
+	bosoncomputerio.$(OBJEXT) kgamedialogcomputerconfig.$(OBJEXT) \
+	bosonpath.$(OBJEXT) unit.$(OBJEXT) bosoncommandwidget.$(OBJEXT) \
+	bosonmusic.$(OBJEXT) selectbox.$(OBJEXT) commandinput.$(OBJEXT) \
+	kgamecanvaschat.$(OBJEXT) bosoncursor.$(OBJEXT) \
+	bosonsound.$(OBJEXT) unitgroup.$(OBJEXT) \
+	bosonstatistics.$(OBJEXT) gameoverdialog.$(OBJEXT) \
+	unitplugins.$(OBJEXT) bosonstarteditorwidget.$(OBJEXT)
+#>- boson_OBJECTS = $(am_boson_OBJECTS)
+#>+ 21
+boson_OBJECTS = main.$(OBJEXT) top.$(OBJEXT) \
+	bosonwelcomewidget.$(OBJEXT) bosonnewgamewidget.$(OBJEXT) \
+	bosonserveroptionswidget.$(OBJEXT) bosonloadingwidget.$(OBJEXT) \
+	cell.$(OBJEXT) unitproperties.$(OBJEXT) unitbase.$(OBJEXT) \
+	boitemlist.$(OBJEXT) boselection.$(OBJEXT) \
+	kspritetooltip.$(OBJEXT) bosonmap.$(OBJEXT) \
+	bosonscenario.$(OBJEXT) bosonplayfield.$(OBJEXT) \
+	bosoncanvas.$(OBJEXT) boson.$(OBJEXT) speciestheme.$(OBJEXT) \
+	player.$(OBJEXT) bosoncommandframe.$(OBJEXT) \
+	kgamedialogbosonconfig.$(OBJEXT) bosonbigdisplay.$(OBJEXT) \
+	bosonminimap.$(OBJEXT) bosonunitview.$(OBJEXT) \
+	kgameunitdebug.$(OBJEXT) bodisplaymanager.$(OBJEXT) \
+	bosonwidget.$(OBJEXT) boshot.$(OBJEXT) bosontiles.$(OBJEXT) \
+	bosonconfig.$(OBJEXT) optionsdialog.$(OBJEXT) \
+	bosoncomputerio.$(OBJEXT) kgamedialogcomputerconfig.$(OBJEXT) \
+	bosonpath.$(OBJEXT) unit.$(OBJEXT) bosoncommandwidget.$(OBJEXT) \
+	bosonmusic.$(OBJEXT) selectbox.$(OBJEXT) commandinput.$(OBJEXT) \
+	kgamecanvaschat.$(OBJEXT) bosoncursor.$(OBJEXT) \
+	bosonsound.$(OBJEXT) unitgroup.$(OBJEXT) \
+	bosonstatistics.$(OBJEXT) gameoverdialog.$(OBJEXT) \
+	unitplugins.$(OBJEXT) bosonstarteditorwidget.$(OBJEXT)
+boson_DEPENDENCIES =
+am_bounit_OBJECTS = unitproperties.$(OBJEXT) bosonunitdialog.$(OBJEXT) \
+	bounitmain.$(OBJEXT)
+#>- bounit_OBJECTS = $(am_bounit_OBJECTS)
+#>+ 2
+bounit_OBJECTS = unitproperties.$(OBJEXT) bosonunitdialog.$(OBJEXT) \
+	bounitmain.$(OBJEXT)
+bounit_DEPENDENCIES =
+
+DEFS = @DEFS@
+DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+depcomp = $(SHELL) $(top_srcdir)/admin/depcomp
+@AMDEP_TRUE@DEP_FILES = $(DEPDIR)/bodisplaymanager.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/boitemlist.Po $(DEPDIR)/boselection.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/boshot.Po $(DEPDIR)/boson.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonbigdisplay.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosoncanvas.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosoncommandframe.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosoncommandwidget.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosoncomputerio.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonconfig.Po $(DEPDIR)/bosoncursor.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonloadingwidget.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonmap.Po $(DEPDIR)/bosonminimap.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonmusic.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonnewgamewidget.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonpath.Po $(DEPDIR)/bosonplayfield.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonscenario.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonserveroptionswidget.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonsound.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonstarteditorwidget.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonstatistics.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosontiles.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonunitdialog.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonunitview.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonwelcomewidget.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/bosonwidget.Po $(DEPDIR)/bounitmain.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/cell.Po $(DEPDIR)/commandinput.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/gameoverdialog.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/kgamecanvaschat.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/kgamedialogbosonconfig.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/kgamedialogcomputerconfig.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/kgameunitdebug.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/kspritetooltip.Po $(DEPDIR)/main.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/optionsdialog.Po $(DEPDIR)/player.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/selectbox.Po $(DEPDIR)/speciestheme.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/top.Po $(DEPDIR)/unit.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/unitbase.Po $(DEPDIR)/unitgroup.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/unitplugins.Po \
+	@AMDEP_TRUE@	$(DEPDIR)/unitproperties.Po
+#>- CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+#>- $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+#>+ 2
+CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) $(KDE_CXXFLAGS)
+#>- LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) \
+#>- $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+#>- $(AM_CXXFLAGS) $(CXXFLAGS)
+#>+ 3
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) \
+	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+	$(AM_CXXFLAGS) $(CXXFLAGS) $(KDE_CXXFLAGS)
+CXXLD = $(CXX)
+#>- CXXLINK = $(LIBTOOL) --mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
+#>- $(AM_LDFLAGS) $(LDFLAGS) -o $@
+#>+ 2
+CXXLINK = $(LIBTOOL) --mode=link --tag=CXX $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(KDE_CXXFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+CXXFLAGS = @CXXFLAGS@
+DIST_SOURCES = $(boson_SOURCES) $(bounit_SOURCES)
+
+RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
+	uninstall-info-recursive all-recursive install-data-recursive \
+	install-exec-recursive installdirs-recursive install-recursive \
+	uninstall-recursive check-recursive installcheck-recursive
+DIST_COMMON = Makefile.am Makefile.in TODO
+DIST_SUBDIRS = $(SUBDIRS)
+SOURCES = $(boson_SOURCES) $(bounit_SOURCES)
+
+#>- all: all-recursive
+#>+ 1
+all: docs-am  all-recursive
+
+.SUFFIXES:
+.SUFFIXES: .cpp .lo .o .obj
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
+
+distclean-libtool:
+	-rm -f libtool
+$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.in $(ACLOCAL_M4)
+#>- 	cd $(top_srcdir) && \
+#>- $(AUTOMAKE) --gnu  boson/Makefile
+#>+ 3
+	cd $(top_srcdir) && \
+	$(AUTOMAKE) --gnu  boson/Makefile
+	cd $(top_srcdir) && perl admin/am_edit boson-0.6.1/boson/Makefile.in
+Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) && \
+	CONFIG_HEADERS= CONFIG_LINKS= \
+	CONFIG_FILES=$(subdir)/$@ $(SHELL) ./config.status
+install-binPROGRAMS: $(bin_PROGRAMS)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	@list='$(bin_PROGRAMS)'; for p in $$list; do \
+	p1=`echo $$p|sed 's/$(EXEEXT)$$//'`; \
+	if test -f $$p \
+	|| test -f $$p1 \
+	; then \
+	f=`echo $$p1|sed '$(transform);s/$$/$(EXEEXT)/'`; \
+	echo " $(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/$$f"; \
+	$(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$p $(DESTDIR)$(bindir)/$$f; \
+	else :; fi; \
+	done
+
+uninstall-binPROGRAMS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(bin_PROGRAMS)'; for p in $$list; do \
+	f=`echo $$p|sed 's/$(EXEEXT)$$//;$(transform);s/$$/$(EXEEXT)/'`; \
+	echo " rm -f $(DESTDIR)$(bindir)/$$f"; \
+	rm -f $(DESTDIR)$(bindir)/$$f; \
+	done
+
+clean-binPROGRAMS:
+	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+boson$(EXEEXT): $(boson_OBJECTS) $(boson_DEPENDENCIES) 
+	@rm -f boson$(EXEEXT)
+	$(CXXLINK) $(boson_LDFLAGS) $(boson_OBJECTS) $(boson_LDADD) $(LIBS)
+bounit$(EXEEXT): $(bounit_OBJECTS) $(bounit_DEPENDENCIES) 
+	@rm -f bounit$(EXEEXT)
+	$(CXXLINK) $(bounit_LDFLAGS) $(bounit_OBJECTS) $(bounit_LDADD) $(LIBS)
+
+mostlyclean-compile:
+	-rm -f *.$(OBJEXT) core *.core
+
+distclean-compile:
+	-rm -f *.tab.c
+
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bodisplaymanager.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/boitemlist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/boselection.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/boshot.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/boson.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonbigdisplay.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosoncanvas.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosoncommandframe.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosoncommandwidget.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosoncomputerio.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonconfig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosoncursor.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonloadingwidget.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonmap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonminimap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonmusic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonnewgamewidget.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonpath.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonplayfield.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonscenario.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonserveroptionswidget.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonsound.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonstarteditorwidget.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonstatistics.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosontiles.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonunitdialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonunitview.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonwelcomewidget.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bosonwidget.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/bounitmain.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/cell.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/commandinput.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/gameoverdialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/kgamecanvaschat.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/kgamedialogbosonconfig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/kgamedialogcomputerconfig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/kgameunitdebug.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/kspritetooltip.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/optionsdialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/player.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/selectbox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/speciestheme.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/top.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/unit.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/unitbase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/unitgroup.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/unitplugins.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@$(DEPDIR)/unitproperties.Po@am__quote@
+
+distclean-depend:
+	-rm -rf $(DEPDIR)
+
+.cpp.o:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+
+.cpp.obj:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(CXXCOMPILE) -c -o $@ `cygpath -w $<`
+
+.cpp.lo:
+@AMDEP_TRUE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+	$(LTCXXCOMPILE) -c -o $@ `test -f $< || echo '$(srcdir)/'`$<
+CXXDEPMODE = @CXXDEPMODE@
+uninstall-info-am:
+
+# This directory's subdirectories are mostly independent; you can cd
+# into them and run `make' without going through this Makefile.
+# To change the values of `make' variables: instead of editing Makefiles,
+# (1) if the variable is set in `config.status', edit `config.status'
+#     (which will cause the Makefiles to be regenerated when you run `make');
+# (2) otherwise, pass the desired values on the `make' command line.
+$(RECURSIVE_TARGETS):
+	@set fnord $(MAKEFLAGS); amf=$$2; \
+	dot_seen=no; \
+	target=`echo $@ | sed s/-recursive//`; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	echo "Making $$target in $$subdir"; \
+	if test "$$subdir" = "."; then \
+	dot_seen=yes; \
+	local_target="$$target-am"; \
+	else \
+	local_target="$$target"; \
+	fi; \
+	(cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	|| case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done; \
+	if test "$$dot_seen" = "no"; then \
+	$(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
+	fi; test -z "$$fail"
+
+mostlyclean-recursive clean-recursive distclean-recursive \
+	maintainer-clean-recursive:
+	@set fnord $(MAKEFLAGS); amf=$$2; \
+	dot_seen=no; \
+	case "$@" in \
+	distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
+	*) list='$(SUBDIRS)' ;; \
+	esac; \
+	rev=''; for subdir in $$list; do \
+	if test "$$subdir" = "."; then :; else \
+	rev="$$subdir $$rev"; \
+	fi; \
+	done; \
+	rev="$$rev ."; \
+	target=`echo $@ | sed s/-recursive//`; \
+	for subdir in $$rev; do \
+	echo "Making $$target in $$subdir"; \
+	if test "$$subdir" = "."; then \
+	local_target="$$target-am"; \
+	else \
+	local_target="$$target"; \
+	fi; \
+	(cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	|| case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+	done && test -z "$$fail"
+tags-recursive:
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	test "$$subdir" = . || (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) tags); \
+	done
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	done | \
+	$(AWK) '    { files[$$0] = 1; } \
+	END { for (i in files) print i; }'`; \
+	mkid -fID $$unique $(LISP)
+
+TAGS: tags-recursive $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+	$(TAGS_FILES) $(LISP)
+	tags=; \
+	here=`pwd`; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	if test "$$subdir" = .; then :; else \
+	test -f $$subdir/TAGS && tags="$$tags -i $$here/$$subdir/TAGS"; \
+	fi; \
+	done; \
+	list='$(SOURCES) $(HEADERS) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	done | \
+	$(AWK) '    { files[$$0] = 1; } \
+	END { for (i in files) print i; }'`; \
+	test -z "$(ETAGS_ARGS)$$unique$(LISP)$$tags" \
+	|| etags $(ETAGS_ARGS) $$tags  $$unique $(LISP)
+
+GTAGS:
+	here=`CDPATH=: && cd $(top_builddir) && pwd` \
+	&& cd $(top_srcdir) \
+	&& gtags -i $(GTAGS_ARGS) $$here
+
+distclean-tags:
+	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH
+
+#>- DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+#>+ 4
+KDE_DIST=boitemlist.cpp kgamedialogcomputerconfig.cpp topbase.h kgamecanvaschat.cpp cell.cpp bosonsound.h player.cpp bosonbigdisplay.h speciestheme.cpp kgamedialogbosonconfig.cpp kgamecanvaschat.h newgamedialog.cpp editorinput.h bosonpath.cpp bosonbigdisplay.cpp main.cpp bosoncommandframe.h bosonunitview.h bosonmusic.cpp unit.h bosonmap.cpp bosoncursor.cpp unitplugins.h defines.h bosonunitdialog.cpp bosoncommandwidget.h kspritetooltip.h bosontiles.cpp unitproperties.h bosoncommandframe.cpp top.h bosonstarteditorwidget.cpp unitgroup.cpp bosonmessage.h bosoncursor.h editor.h bounitmain.cpp kspritetooltip.cpp unitproperties.cpp bosoncomputerio.cpp bosonsound.cpp rtti.h bosonserveroptionswidget.h cell.h editorinput.cpp bosonnewgamewidget.cpp gameoverdialog.h bosoncommandwidget.cpp boson.cpp player.h kgamedialogcomputerconfig.h bosonwidget.cpp bosonmusic.h DESIGN bosonwidget.h bosonplayfield.cpp boson.h bosontiles.h configure.in.in bosonunitdialog.h bosonstatistics.h boshot.h bodisplaymanager.h bosoncomputerio.h bosonwelcomewidget.cpp bosonconfig.h boselection.h kgameunitdebug.h newgamedialog.h bosonserveroptionswidget.cpp selectbox.h unitgroup.h gameoverdialog.cpp bosonminimap.cpp boshot.cpp bosonplayfield.h bosonstarteditorwidget.h bosonscenario.h unitbase.cpp speciestheme.h selectbox.cpp bodisplaymanager.cpp commandinput.h bosonunitview.cpp bosonpath.h kgamedialogbosonconfig.h bosonmap.h bosonloadingwidget.cpp bosoncanvas.cpp editor.cpp bosonconfig.cpp unit.cpp bosonminimap.h bosonnewgamewidget.h bosonloadingwidget.h optionsdialog.h unitbase.h bosonstatistics.cpp bosonwelcomewidget.h global.h boselection.cpp boitemlist.h unitplugins.cpp commandinput.cpp topbase.cpp bosonscenario.cpp top.cpp bosoncanvas.h optionsdialog.cpp kgameunitdebug.cpp 
+
+DISTFILES= $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST) $(KDE_DIST)
+
+
+top_distdir = ..
+distdir = $(top_distdir)/$(PACKAGE)-$(VERSION)
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	if test -f $$file; then d=.; else d=$(srcdir); fi; \
+	dir=`echo "$$file" | sed -e 's,/[^/]*$$,,'`; \
+	if test "$$dir" != "$$file" && test "$$dir" != "."; then \
+	$(mkinstalldirs) "$(distdir)/$$dir"; \
+	fi; \
+	if test -d $$d/$$file; then \
+	cp -pR $$d/$$file $(distdir) \
+	|| exit 1; \
+	else \
+	test -f $(distdir)/$$file \
+	|| cp -p $$d/$$file $(distdir)/$$file \
+	|| exit 1; \
+	fi; \
+	done
+	for subdir in $(SUBDIRS); do \
+	if test "$$subdir" = .; then :; else \
+	test -d $(distdir)/$$subdir \
+	|| mkdir $(distdir)/$$subdir \
+	|| exit 1; \
+	(cd $$subdir && \
+	$(MAKE) $(AM_MAKEFLAGS) \
+	top_distdir="$(top_distdir)" \
+	distdir=../$(distdir)/$$subdir \
+	distdir) \
+	|| exit 1; \
+	fi; \
+	done
+check-am: all-am
+check: check-recursive
+all-am: Makefile $(PROGRAMS)
+installdirs: installdirs-recursive
+installdirs-am:
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
+
+install: install-recursive
+install-exec: install-exec-recursive
+install-data: install-data-recursive
+uninstall: uninstall-recursive
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+
+installcheck: installcheck-recursive
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
+	`test -z '$(STRIP)' || \
+	echo "INSTALL_PROGRAM_ENV=STRIPPROG='$(STRIP)'"` install
+mostlyclean-generic:
+
+clean-generic:
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES) stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	@echo "This command is intended for maintainers to use"
+	@echo "it deletes files that may require special tools to rebuild."
+#>- clean: clean-recursive
+#>+ 1
+clean: kde-rpo-clean  clean-recursive
+
+#>- clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
+#>+ 1
+clean-am: clean-metasources  clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
+
+distclean: distclean-recursive
+
+distclean-am: clean-am distclean-compile distclean-depend \
+	distclean-generic distclean-libtool distclean-tags
+
+dvi: dvi-recursive
+
+dvi-am:
+
+info: info-recursive
+
+info-am:
+
+install-data-am:
+
+install-exec-am: install-binPROGRAMS
+
+install-info: install-info-recursive
+
+install-man:
+
+installcheck-am:
+
+maintainer-clean: maintainer-clean-recursive
+
+maintainer-clean-am: distclean-am maintainer-clean-generic
+
+mostlyclean: mostlyclean-recursive
+
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
+
+uninstall-am: uninstall-binPROGRAMS uninstall-info-am
+
+uninstall-info: uninstall-info-recursive
+
+.PHONY: $(RECURSIVE_TARGETS) GTAGS all all-am check check-am clean \
+	clean-binPROGRAMS clean-generic clean-libtool clean-recursive \
+	distclean distclean-compile distclean-depend distclean-generic \
+	distclean-libtool distclean-recursive distclean-tags distdir \
+	dvi dvi-am dvi-recursive info info-am info-recursive install \
+	install-am install-binPROGRAMS install-data install-data-am \
+	install-data-recursive install-exec install-exec-am \
+	install-exec-recursive install-info install-info-am \
+	install-info-recursive install-man install-recursive \
+	install-strip installcheck installcheck-am installdirs \
+	installdirs-am installdirs-recursive maintainer-clean \
+	maintainer-clean-generic maintainer-clean-recursive mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	mostlyclean-recursive tags tags-recursive uninstall \
+	uninstall-am uninstall-binPROGRAMS uninstall-info-am \
+	uninstall-info-recursive uninstall-recursive
+
+
+# not yet used:
+#messages: rc.cpp
+#	$(XGETTEXT) rc.cpp $(COMMON_SRC) $(BOSON_SRC) $(BOEDITOR_SRC) -o $(podir)/boson.pot
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:
+
+
+#>+ 3
+bosonmap.moc: $(srcdir)/bosonmap.h
+	$(MOC) $(srcdir)/bosonmap.h -o bosonmap.moc
+
+#>+ 3
+kgamedialogcomputerconfig.moc: $(srcdir)/kgamedialogcomputerconfig.h
+	$(MOC) $(srcdir)/kgamedialogcomputerconfig.h -o kgamedialogcomputerconfig.moc
+
+#>+ 3
+bosoncursor.moc: $(srcdir)/bosoncursor.h
+	$(MOC) $(srcdir)/bosoncursor.h -o bosoncursor.moc
+
+#>+ 3
+bosonloadingwidget.moc: $(srcdir)/bosonloadingwidget.h
+	$(MOC) $(srcdir)/bosonloadingwidget.h -o bosonloadingwidget.moc
+
+#>+ 3
+kgamedialogbosonconfig.moc: $(srcdir)/kgamedialogbosonconfig.h
+	$(MOC) $(srcdir)/kgamedialogbosonconfig.h -o kgamedialogbosonconfig.moc
+
+#>+ 3
+bosonminimap.moc: $(srcdir)/bosonminimap.h
+	$(MOC) $(srcdir)/bosonminimap.h -o bosonminimap.moc
+
+#>+ 3
+bosoncommandwidget.moc: $(srcdir)/bosoncommandwidget.h
+	$(MOC) $(srcdir)/bosoncommandwidget.h -o bosoncommandwidget.moc
+
+#>+ 3
+bosonwidget.moc: $(srcdir)/bosonwidget.h
+	$(MOC) $(srcdir)/bosonwidget.h -o bosonwidget.moc
+
+#>+ 3
+bosonbigdisplay.moc: $(srcdir)/bosonbigdisplay.h
+	$(MOC) $(srcdir)/bosonbigdisplay.h -o bosonbigdisplay.moc
+
+#>+ 3
+top.moc: $(srcdir)/top.h
+	$(MOC) $(srcdir)/top.h -o top.moc
+
+#>+ 3
+bosonunitview.moc: $(srcdir)/bosonunitview.h
+	$(MOC) $(srcdir)/bosonunitview.h -o bosonunitview.moc
+
+#>+ 3
+bosoncommandframe.moc: $(srcdir)/bosoncommandframe.h
+	$(MOC) $(srcdir)/bosoncommandframe.h -o bosoncommandframe.moc
+
+#>+ 3
+bosoncanvas.moc: $(srcdir)/bosoncanvas.h
+	$(MOC) $(srcdir)/bosoncanvas.h -o bosoncanvas.moc
+
+#>+ 3
+bosonserveroptionswidget.moc: $(srcdir)/bosonserveroptionswidget.h
+	$(MOC) $(srcdir)/bosonserveroptionswidget.h -o bosonserveroptionswidget.moc
+
+#>+ 3
+boson.moc: $(srcdir)/boson.h
+	$(MOC) $(srcdir)/boson.h -o boson.moc
+
+#>+ 3
+commandinput.moc: $(srcdir)/commandinput.h
+	$(MOC) $(srcdir)/commandinput.h -o commandinput.moc
+
+#>+ 3
+bosonstarteditorwidget.moc: $(srcdir)/bosonstarteditorwidget.h
+	$(MOC) $(srcdir)/bosonstarteditorwidget.h -o bosonstarteditorwidget.moc
+
+#>+ 3
+topbase.moc: $(srcdir)/topbase.h
+	$(MOC) $(srcdir)/topbase.h -o topbase.moc
+
+#>+ 3
+gameoverdialog.moc: $(srcdir)/gameoverdialog.h
+	$(MOC) $(srcdir)/gameoverdialog.h -o gameoverdialog.moc
+
+#>+ 3
+newgamedialog.moc: $(srcdir)/newgamedialog.h
+	$(MOC) $(srcdir)/newgamedialog.h -o newgamedialog.moc
+
+#>+ 3
+kgamecanvaschat.moc: $(srcdir)/kgamecanvaschat.h
+	$(MOC) $(srcdir)/kgamecanvaschat.h -o kgamecanvaschat.moc
+
+#>+ 3
+bosonwelcomewidget.moc: $(srcdir)/bosonwelcomewidget.h
+	$(MOC) $(srcdir)/bosonwelcomewidget.h -o bosonwelcomewidget.moc
+
+#>+ 3
+bosoncomputerio.moc: $(srcdir)/bosoncomputerio.h
+	$(MOC) $(srcdir)/bosoncomputerio.h -o bosoncomputerio.moc
+
+#>+ 3
+optionsdialog.moc: $(srcdir)/optionsdialog.h
+	$(MOC) $(srcdir)/optionsdialog.h -o optionsdialog.moc
+
+#>+ 3
+kgameunitdebug.moc: $(srcdir)/kgameunitdebug.h
+	$(MOC) $(srcdir)/kgameunitdebug.h -o kgameunitdebug.moc
+
+#>+ 3
+bosonmusic.moc: $(srcdir)/bosonmusic.h
+	$(MOC) $(srcdir)/bosonmusic.h -o bosonmusic.moc
+
+#>+ 3
+editor.moc: $(srcdir)/editor.h
+	$(MOC) $(srcdir)/editor.h -o editor.moc
+
+#>+ 3
+bosonnewgamewidget.moc: $(srcdir)/bosonnewgamewidget.h
+	$(MOC) $(srcdir)/bosonnewgamewidget.h -o bosonnewgamewidget.moc
+
+#>+ 3
+player.moc: $(srcdir)/player.h
+	$(MOC) $(srcdir)/player.h -o player.moc
+
+#>+ 3
+bosontiles.moc: $(srcdir)/bosontiles.h
+	$(MOC) $(srcdir)/bosontiles.h -o bosontiles.moc
+
+#>+ 3
+boselection.moc: $(srcdir)/boselection.h
+	$(MOC) $(srcdir)/boselection.h -o boselection.moc
+
+#>+ 3
+bodisplaymanager.moc: $(srcdir)/bodisplaymanager.h
+	$(MOC) $(srcdir)/bodisplaymanager.h -o bodisplaymanager.moc
+
+#>+ 3
+bosonplayfield.moc: $(srcdir)/bosonplayfield.h
+	$(MOC) $(srcdir)/bosonplayfield.h -o bosonplayfield.moc
+
+#>+ 3
+editorinput.moc: $(srcdir)/editorinput.h
+	$(MOC) $(srcdir)/editorinput.h -o editorinput.moc
+
+#>+ 3
+bosonunitdialog.moc: $(srcdir)/bosonunitdialog.h
+	$(MOC) $(srcdir)/bosonunitdialog.h -o bosonunitdialog.moc
+
+#>+ 3
+clean-metasources:
+	-rm -f  bosonmap.moc kgamedialogcomputerconfig.moc bosoncursor.moc bosonloadingwidget.moc kgamedialogbosonconfig.moc bosonminimap.moc bosoncommandwidget.moc bosonwidget.moc bosonbigdisplay.moc top.moc bosonunitview.moc bosoncommandframe.moc bosoncanvas.moc bosonserveroptionswidget.moc boson.moc commandinput.moc bosonstarteditorwidget.moc topbase.moc gameoverdialog.moc newgamedialog.moc kgamecanvaschat.moc bosonwelcomewidget.moc bosoncomputerio.moc optionsdialog.moc kgameunitdebug.moc bosonmusic.moc editor.moc bosonnewgamewidget.moc player.moc bosontiles.moc boselection.moc bodisplaymanager.moc bosonplayfield.moc editorinput.moc bosonunitdialog.moc
+
+#>+ 2
+docs-am:
+
+#>+ 6
+force-reedit:
+		cd $(top_srcdir) && \
+	$(AUTOMAKE) --gnu  boson/Makefile
+	cd $(top_srcdir) && perl admin/am_edit boson-0.6.1/boson/Makefile.in
+
+
+#>+ 2
+final:
+	$(MAKE) all-am
+#>+ 2
+final-install:
+	$(MAKE) install-am
+#>+ 2
+no-final:
+	$(MAKE) all-am
+#>+ 2
+no-final-install:
+	$(MAKE) install-am
+#>+ 3
+cvs-clean:
+	$(MAKE) -f $(top_srcdir)/admin/Makefile.common cvs-clean
+
+#>+ 3
+kde-rpo-clean:
+	-rm -f *.rpo
+
+#>+ 36
+$(srcdir)/bosoncomputerio.cpp: bosoncomputerio.moc 
+$(srcdir)/bosoncursor.cpp: bosoncursor.moc 
+$(srcdir)/bosonstarteditorwidget.cpp: bosonstarteditorwidget.moc 
+$(srcdir)/kgameunitdebug.cpp: kgameunitdebug.moc 
+$(srcdir)/commandinput.cpp: commandinput.moc 
+$(srcdir)/top.cpp: top.moc 
+$(srcdir)/bosonplayfield.cpp: bosonplayfield.moc 
+$(srcdir)/bosoncanvas.cpp: bosoncanvas.moc 
+$(srcdir)/boselection.cpp: boselection.moc 
+$(srcdir)/kgamecanvaschat.cpp: kgamecanvaschat.moc 
+$(srcdir)/optionsdialog.cpp: optionsdialog.moc 
+$(srcdir)/editorinput.cpp: editorinput.moc 
+$(srcdir)/bodisplaymanager.cpp: bodisplaymanager.moc 
+$(srcdir)/editor.cpp: editor.moc 
+$(srcdir)/bosonloadingwidget.cpp: bosonloadingwidget.moc 
+$(srcdir)/gameoverdialog.cpp: gameoverdialog.moc 
+$(srcdir)/kgamedialogcomputerconfig.cpp: kgamedialogcomputerconfig.moc 
+$(srcdir)/bosonwidget.cpp: bosonwidget.moc 
+$(srcdir)/bosonbigdisplay.cpp: bosonbigdisplay.moc 
+$(srcdir)/bosoncommandframe.cpp: bosoncommandframe.moc 
+$(srcdir)/bosonnewgamewidget.cpp: bosonnewgamewidget.moc 
+$(srcdir)/bosonminimap.cpp: bosonminimap.moc 
+$(srcdir)/bosonserveroptionswidget.cpp: bosonserveroptionswidget.moc 
+$(srcdir)/newgamedialog.cpp: newgamedialog.moc 
+$(srcdir)/bosoncommandwidget.cpp: bosoncommandwidget.moc 
+$(srcdir)/bosonunitdialog.cpp: bosonunitdialog.moc 
+$(srcdir)/kgamedialogbosonconfig.cpp: kgamedialogbosonconfig.moc 
+$(srcdir)/topbase.cpp: topbase.moc 
+$(srcdir)/bosonmusic.cpp: bosonmusic.moc 
+$(srcdir)/bosontiles.cpp: bosontiles.moc 
+$(srcdir)/player.cpp: player.moc 
+$(srcdir)/bosonwelcomewidget.cpp: bosonwelcomewidget.moc 
+$(srcdir)/bosonmap.cpp: bosonmap.moc 
+$(srcdir)/boson.cpp: boson.moc 
+$(srcdir)/bosonunitview.cpp: bosonunitview.moc 
