@@ -475,7 +475,7 @@ void editorTopLevel::slot_editDestroy(void)
 		_canvas->facilities.remove(mkey);
 	} else {
 		/* destroy mobiles */
-		Q3DictIterator<visualMobUnit> selIt(mobSelected);
+		Q3IntDictIterator<visualMobUnit> selIt(mobSelected);
 		for( ; selIt.current(); ++selIt ) {
 			mkey = selIt.current(); 		// by the .remove() in unselect
 			unSelectMob(mkey);

@@ -3,4 +3,4 @@ lessThan(QT_VERSION, 4.5) {
 }
 
 TEMPLATE = subdirs
-SUBDIRS = boson editor
+SUBDIRS = editor

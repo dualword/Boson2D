@@ -42,7 +42,7 @@ void bosonBigDisplay::actionClicked(int mx, int my, int /*state*/)
 	if (vtl->mobSelected.isEmpty()) return;	// nothing to do
 	if ((int)who_am_i != vtl->selectionWho) return;	// nothing to do
 
-	Q3DictIterator<visualMobUnit> mobIt(vtl->mobSelected);
+	Q3IntDictIterator<visualMobUnit> mobIt(vtl->mobSelected);
 
 
 	sfg = bocanvas->findUnitAt( mx, my);
