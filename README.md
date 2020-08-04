@@ -7,6 +7,5 @@ Source code: http://github.com/dualword/Boson2D/
 
 Third Party Software:
  - Qt License: LGPL v2.1
- - Boson 0.5 License: GPL
 
-![Screenshot](Screenshot.png)
+![Screenshot](screenshot.png)
